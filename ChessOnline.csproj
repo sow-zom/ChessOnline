@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="image\BishopBLACK.png" />
+    <None Remove="image\BishopWHITE.png" />
+    <None Remove="image\KingBLACK.png" />
+    <None Remove="image\KingWHITE.png" />
+    <None Remove="image\KnightBLACK.png" />
+    <None Remove="image\KnightWHITE.png" />
+    <None Remove="image\PawnBLACK.png" />
+    <None Remove="image\PawnWHITE.png" />
+    <None Remove="image\QueenBLACK.png" />
+    <None Remove="image\QueenWHITE.png" />
+    <None Remove="image\RookBLACK.png" />
+    <None Remove="image\RookWHITE.png" />
+    <None Remove="image\TowerBLACK.png" />
+    <None Remove="image\TowerWHITE.png" />
+    <None Remove="image\TransformB.png" />
+    <None Remove="image\TransformW.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="image\BishopBLACK.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\BishopWHITE.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\KingBLACK.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\KingWHITE.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\KnightBLACK.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\KnightWHITE.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\PawnBLACK.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\PawnWHITE.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\QueenBLACK.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\QueenWHITE.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\RookBLACK.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\RookWHITE.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\TransformB.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\TransformW.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>
