@@ -32,6 +32,8 @@ namespace ChessOnline
 			{ 1, 1, 1, 1, 1, 1, 1, 1 },
 			{ 2, 3, 4, 5, 6, 4, 3, 2 },
 		   };
+		int Click1 = 0;
+		int Click2 = 0;
 
 		BitmapImage Img_W_King = new BitmapImage(new Uri(@"image\KingWHITE.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_W_Queen = new BitmapImage(new Uri(@"image\QueenWHITE.png", UriKind.RelativeOrAbsolute));
@@ -49,40 +51,19 @@ namespace ChessOnline
 
 		BitmapImage Img_W_SuperPawn = new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_B_SuperPawn = new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
+		
 		public MainWindow()
 		{
 			InitializeComponent();
-			
-			
-
-			test.ItemsSource = board[6, 0].ToString();
+			//test.ItemsSource = board[6, 0].ToString();
 			draw();
-			
-
-
-
-			//const int PawnWHITE = 1;
-
-
-			//{
-			//{-2,-3,-4,-5,-6,-4,-3,-2 },
-			//{-1,-1,-1,-1,-1,-1,-1,-1 },
-			//{ 0, 0, 0, 0, 0, 0, 0, 0 },
-			//{ 0, 0, 0, 0, 0, 0, 0, 0 },
-			//{ 0, 0, 0, 0, 0, 0, 0, 0 },
-			//{ 0, 0, 0, 0, 0, 0, 0, 0 },
-			//{ 1, 1, 1, 1, 1, 1, 1, 1 },
-			//{ 2, 3, 4, 5, 6, 4, 3, 2 },
-			//};
-
-
-			
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			//board[2, 0] = 7;
 			//draw();
+
 
 		}
 		BitmapImage drawByNum(int i)
