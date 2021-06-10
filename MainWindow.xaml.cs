@@ -15,25 +15,22 @@ using System.Windows.Shapes;
 
 namespace ChessOnline
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
-	public partial class MainWindow : Window
-	{
-		int[,] board = new int[8, 8]
+    public partial class MainWindow : Window
+    {
+        int[,] board = new int[8, 8]
 
-		   {
-			{-2,-3,-4,-5,-6,-4,-3,-2 },
-			{-1,-1,-1,-1,-1,-1,-1,-1 },
-			{ 0, 0, 0, 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0, 0, 0, 0 },
-			{ 1, 1, 1, 1, 1, 1, 1, 1 },
-			{ 2, 3, 4, 5, 6, 4, 3, 2 },
-		   };
-		int Click1 = 0;
-		int Click2 = 0;
+           {
+            {-2,-3,-4,-5,-6,-4,-3,-2 },
+            {-1,-1,-1,-1,-1,-1,-1,-1 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 2, 3, 4, 5, 6, 4, 3, 2 },
+           };
+        public int[] Click1 = {-1,-1};
+        bool Click1AreMade = false;
 
 		BitmapImage Img_W_King = new BitmapImage(new Uri(@"image\KingWHITE.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_W_Queen = new BitmapImage(new Uri(@"image\QueenWHITE.png", UriKind.RelativeOrAbsolute));
@@ -55,18 +52,19 @@ namespace ChessOnline
 		public MainWindow()
 		{
 			InitializeComponent();
-			//test.ItemsSource = board[6, 0].ToString();
+			
 			draw();
 		}
+		public void testPos(string i, string j) 
+        {
+            test.ItemsSource =  i + j;
+        }
+        public void testItem(int i, int j)
+        {
+            test2.ItemsSource = board[i,j].ToString();
+        }
 
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			//board[2, 0] = 7;
-			//draw();
-
-
-		}
-		BitmapImage drawByNum(int i)
+        BitmapImage drawByNum(int i)
 		{
 			switch (i)
 			{
@@ -91,7 +89,7 @@ namespace ChessOnline
 			}
 		}
 		void draw()
-        {
+		{
 			a8.Source = drawByNum(board[0, 0]); b8.Source = drawByNum(board[0, 1]); c8.Source = drawByNum(board[0, 2]); d8.Source = drawByNum(board[0, 3]); e8.Source = drawByNum(board[0, 4]); f8.Source = drawByNum(board[0, 5]); g8.Source = drawByNum(board[0, 6]); h8.Source = drawByNum(board[0, 7]);
 			a7.Source = drawByNum(board[1, 0]); b7.Source = drawByNum(board[1, 1]); c7.Source = drawByNum(board[1, 2]); d7.Source = drawByNum(board[1, 3]); e7.Source = drawByNum(board[1, 4]); f7.Source = drawByNum(board[1, 5]); g7.Source = drawByNum(board[1, 6]); h7.Source = drawByNum(board[1, 7]);
 			a6.Source = drawByNum(board[2, 0]); b6.Source = drawByNum(board[2, 1]); c6.Source = drawByNum(board[2, 2]); d6.Source = drawByNum(board[2, 3]); e6.Source = drawByNum(board[2, 4]); f6.Source = drawByNum(board[2, 5]); g6.Source = drawByNum(board[2, 6]); h6.Source = drawByNum(board[2, 7]);
@@ -101,7 +99,557 @@ namespace ChessOnline
 			a2.Source = drawByNum(board[6, 0]); b2.Source = drawByNum(board[6, 1]); c2.Source = drawByNum(board[6, 2]); d2.Source = drawByNum(board[6, 3]); e2.Source = drawByNum(board[6, 4]); f2.Source = drawByNum(board[6, 5]); g2.Source = drawByNum(board[6, 6]); h2.Source = drawByNum(board[6, 7]);
 			a1.Source = drawByNum(board[7, 0]); b1.Source = drawByNum(board[7, 1]); c1.Source = drawByNum(board[7, 2]); d1.Source = drawByNum(board[7, 3]); e1.Source = drawByNum(board[7, 4]); f1.Source = drawByNum(board[7, 5]); g1.Source = drawByNum(board[7, 6]); h1.Source = drawByNum(board[7, 7]);
 		}
-	}
+
+        private void SecCkick() 
+        { 
+            
+        }
+
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+            //board[0, 0] = 7;
+            //draw();
+           Click1[0] = 0;
+           Click1[1] = 0;
+           testPos(Click1[0].ToString(), Click1[1].ToString());
+           testItem(Click1[0], Click1[1]);
+           
+
+        }
+		
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 0;
+            Click1[1] = 1;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 0;
+            Click1[1] = 2;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+
+            Click1[0] = 0;
+            Click1[1] = 3;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 0;
+            Click1[1] = 4;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 0;
+            Click1[1] = 5;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 0;
+            Click1[1] = 6;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 0;
+            Click1[1] = 7;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 1;
+            Click1[1] = 0;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_9(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 1;
+            Click1[1] = 1;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+        }
+
+        private void Button_Click_10(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 1;
+            Click1[1] = 2;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_11(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 1;
+            Click1[1] = 3;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_12(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 1;
+            Click1[1] = 4;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_13(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 1;
+            Click1[1] = 5;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_14(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 1;
+            Click1[1] = 6;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+        }
+
+        private void Button_Click_15(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 1;
+            Click1[1] = 7;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_16(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 2;
+            Click1[1] = 0;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_17(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 2;
+            Click1[1] = 1;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_18(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 2;
+            Click1[1] = 2;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+        }
+
+        private void Button_Click_19(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 2;
+            Click1[1] = 3;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_20(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 2;
+            Click1[1] = 4;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_21(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 2;
+            Click1[1] = 5;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_22(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 2;
+            Click1[1] = 6;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_23(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 2;
+            Click1[1] = 7;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_24(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 3;
+            Click1[1] = 0;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+        }
+
+        private void Button_Click_25(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 3;
+            Click1[1] = 1;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+        }
+
+        private void Button_Click_26(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 3;
+            Click1[1] = 2;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+
+        }
+
+        private void Button_Click_27(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 3;
+            Click1[1] = 3;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+        }
+
+        private void Button_Click_28(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 3;
+            Click1[1] = 4;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+        }
+
+        private void Button_Click_29(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 3;
+            Click1[1] = 5;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_30(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 3;
+            Click1[1] = 6;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_31(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 3;
+            Click1[1] = 7;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+
+        }
+
+        private void Button_Click_32(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 4;
+            Click1[1] = 0;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+
+        }
+
+        private void Button_Click_33(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 4;
+            Click1[1] = 1;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+        }
+
+        private void Button_Click_34(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 4;
+            Click1[1] = 2;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+        }
+
+        private void Button_Click_35(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 4;
+            Click1[1] = 3;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+        }
+
+        private void Button_Click_36(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 4;
+            Click1[1] = 4;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+
+        }
+
+        private void Button_Click_37(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 4;
+            Click1[1] = 5;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+        }
+
+        private void Button_Click_38(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 4;
+            Click1[1] = 6;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+
+        }
+
+        private void Button_Click_39(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 4;
+            Click1[1] = 7;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+
+        }
+
+        private void Button_Click_40(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 5;
+            Click1[1] = 0;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+        }
+
+        private void Button_Click_41(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 5;
+            Click1[1] = 1;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+
+        }
+
+        private void Button_Click_42(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 5;
+            Click1[1] = 2;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_43(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 5;
+            Click1[1] = 3;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_44(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 5;
+            Click1[1] = 4;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_45(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 5;
+            Click1[1] = 5;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_46(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 5;
+            Click1[1] = 6;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_47(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 5;
+            Click1[1] = 7;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_48(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 6;
+            Click1[1] = 0;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_49(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 6;
+            Click1[1] = 1;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_50(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 6;
+            Click1[1] = 2;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_51(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 6;
+            Click1[1] = 3;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_52(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 6;
+            Click1[1] = 4;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_53(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 6;
+            Click1[1] = 5;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_54(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 6;
+            Click1[1] = 6;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_55(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 6;
+            Click1[1] = 7;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_56(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 7;
+            Click1[1] = 0;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_57(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 7;
+            Click1[1] = 1;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_58(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 7;
+            Click1[1] = 2;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_59(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 7;
+            Click1[1] = 3;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_60(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 7;
+            Click1[1] = 4;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_61(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 7;
+            Click1[1] = 5;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_62(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 7;
+            Click1[1] = 6;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+
+        private void Button_Click_63(object sender, RoutedEventArgs e)
+        {
+            Click1[0] = 7;
+            Click1[1] = 7;
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+        }
+    }
 
 
 }
