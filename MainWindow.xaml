@@ -9,12 +9,12 @@
     <Grid x:Name="MainGrid">
         <Grid Background="Peru">
 
-            <Button Background="White" HorizontalAlignment="Left" Margin="181,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click">
+            <Button ClickMode="Release" Background="White" HorizontalAlignment="Left" Margin="181,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click">
                 <StackPanel>
                     <Image x:Name="a8"/>
                 </StackPanel>
             </Button>
-            <Button  Background="Brown" HorizontalAlignment="Left" Margin="281,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_1" >
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="281,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_1" >
                 <StackPanel>
                     <Image x:Name="b8"/>
                 </StackPanel>
@@ -336,7 +336,7 @@
                     <Image x:Name="h1"/>
                 </StackPanel>
             </Button>
-            <ListBox x:Name="test" Margin="1239,23,69,697"/>
+            <ListBox x:Name="test" Margin="1239,23,69,747"/>
             <TextBlock HorizontalAlignment="Left" Margin="181,823,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top"/>
             <Grid Background="Bisque" HorizontalAlignment="Left" Height="28" Margin="181,822,0,0" VerticalAlignment="Top" Width="810">
                 <Label Content="A" HorizontalAlignment="Left" Margin="43,0,0,0" VerticalAlignment="Center"/>
@@ -360,7 +360,8 @@
             </Grid>
             <Grid Background="Bisque" HorizontalAlignment="Left" Height="28" Margin="180,-2,0,0" VerticalAlignment="Top" Width="805"/>
             <Grid Background="Bisque" HorizontalAlignment="Left" Height="852" Margin="980,-2,0,0" VerticalAlignment="Top" Width="29"/>
-            <ListBox x:Name="test2" Margin="1239,198,69,522"/>
+            <ListBox x:Name="test2" Margin="1239,173,69,654"/>
+            <ListBox x:Name="test3" Margin="1239,285,69,547"/>
 
 
         </Grid>

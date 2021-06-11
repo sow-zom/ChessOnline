@@ -29,10 +29,14 @@ namespace ChessOnline
             { 1, 1, 1, 1, 1, 1, 1, 1 },
             { 2, 3, 4, 5, 6, 4, 3, 2 },
            };
-        public int[] Click1 = {-1,-1};
-        bool Click1AreMade = false;
-
-		BitmapImage Img_W_King = new BitmapImage(new Uri(@"image\KingWHITE.png", UriKind.RelativeOrAbsolute));
+        public int[] Click1 = {1, 1};
+        bool Click1Made = false;
+        bool FigrAreSelect = false;
+        int fromWhere = -1;
+        int fromWhere1 = -1;
+        int whereTo = -1;
+        int whereTo1 = -1;
+        BitmapImage Img_W_King = new BitmapImage(new Uri(@"image\KingWHITE.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_W_Queen = new BitmapImage(new Uri(@"image\QueenWHITE.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_W_Bishop = new BitmapImage(new Uri(@"image\BishopWHITE.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_W_Knight = new BitmapImage(new Uri(@"image\KnightWHITE.png", UriKind.RelativeOrAbsolute));
@@ -52,8 +56,9 @@ namespace ChessOnline
 		public MainWindow()
 		{
 			InitializeComponent();
-			
-			draw();
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+            draw();
 		}
 		public void testPos(string i, string j) 
         {
@@ -62,6 +67,7 @@ namespace ChessOnline
         public void testItem(int i, int j)
         {
             test2.ItemsSource = board[i,j].ToString();
+            test3.ItemsSource = Click1Made.ToString();
         }
 
         BitmapImage drawByNum(int i)
@@ -104,7 +110,30 @@ namespace ChessOnline
         { 
             
         }
+        void OnClick() 
+        {
+            
+            if (Click1Made) 
+            {
+                fromWhere = Click1[0];
+                fromWhere1 = Click1[1];
+                FigrAreSelect = true;
+            }
+            if (!Click1Made)
+            {
+                whereTo = Click1[0];
+                whereTo1 = Click1[1];
+                if (FigrAreSelect)
+                {
+                    int temp = board[whereTo, whereTo1];
+                    board[whereTo, whereTo1] = board[fromWhere, fromWhere1];
+                    if (temp != board[fromWhere, fromWhere1]) board[fromWhere, fromWhere1] = 0;
+                    draw();
+                }
+            }
 
+
+        }
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
@@ -112,9 +141,10 @@ namespace ChessOnline
             //draw();
            Click1[0] = 0;
            Click1[1] = 0;
-           testPos(Click1[0].ToString(), Click1[1].ToString());
-           testItem(Click1[0], Click1[1]);
+            if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+           testItem(Click1[0], Click1[1]); OnClick();  
            
+           // a.Background = Color.;
 
         }
 		
@@ -123,16 +153,16 @@ namespace ChessOnline
         {
             Click1[0] = 0;
             Click1[1] = 1;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Click1[0] = 0;
             Click1[1] = 2;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
         }
 
@@ -141,56 +171,56 @@ namespace ChessOnline
 
             Click1[0] = 0;
             Click1[1] = 3;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             Click1[0] = 0;
             Click1[1] = 4;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
             Click1[0] = 0;
             Click1[1] = 5;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
             Click1[0] = 0;
             Click1[1] = 6;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
             Click1[0] = 0;
             Click1[1] = 7;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
             Click1[0] = 1;
             Click1[1] = 0;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_9(object sender, RoutedEventArgs e)
         {
             Click1[0] = 1;
             Click1[1] = 1;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
         }
 
@@ -198,40 +228,40 @@ namespace ChessOnline
         {
             Click1[0] = 1;
             Click1[1] = 2;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_11(object sender, RoutedEventArgs e)
         {
             Click1[0] = 1;
             Click1[1] = 3;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_12(object sender, RoutedEventArgs e)
         {
             Click1[0] = 1;
             Click1[1] = 4;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_13(object sender, RoutedEventArgs e)
         {
             Click1[0] = 1;
             Click1[1] = 5;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_14(object sender, RoutedEventArgs e)
         {
             Click1[0] = 1;
             Click1[1] = 6;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
         }
 
@@ -239,32 +269,32 @@ namespace ChessOnline
         {
             Click1[0] = 1;
             Click1[1] = 7;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_16(object sender, RoutedEventArgs e)
         {
             Click1[0] = 2;
             Click1[1] = 0;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_17(object sender, RoutedEventArgs e)
         {
             Click1[0] = 2;
             Click1[1] = 1;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_18(object sender, RoutedEventArgs e)
         {
             Click1[0] = 2;
             Click1[1] = 2;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
         }
 
@@ -272,48 +302,48 @@ namespace ChessOnline
         {
             Click1[0] = 2;
             Click1[1] = 3;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_20(object sender, RoutedEventArgs e)
         {
             Click1[0] = 2;
             Click1[1] = 4;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_21(object sender, RoutedEventArgs e)
         {
             Click1[0] = 2;
             Click1[1] = 5;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_22(object sender, RoutedEventArgs e)
         {
             Click1[0] = 2;
             Click1[1] = 6;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_23(object sender, RoutedEventArgs e)
         {
             Click1[0] = 2;
             Click1[1] = 7;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_24(object sender, RoutedEventArgs e)
         {
             Click1[0] = 3;
             Click1[1] = 0;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
         }
 
@@ -321,8 +351,8 @@ namespace ChessOnline
         {
             Click1[0] = 3;
             Click1[1] = 1;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
         }
 
@@ -330,8 +360,8 @@ namespace ChessOnline
         {
             Click1[0] = 3;
             Click1[1] = 2;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
 
         }
@@ -340,8 +370,8 @@ namespace ChessOnline
         {
             Click1[0] = 3;
             Click1[1] = 3;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
         }
 
@@ -349,8 +379,8 @@ namespace ChessOnline
         {
             Click1[0] = 3;
             Click1[1] = 4;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
         }
 
@@ -358,24 +388,24 @@ namespace ChessOnline
         {
             Click1[0] = 3;
             Click1[1] = 5;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_30(object sender, RoutedEventArgs e)
         {
             Click1[0] = 3;
             Click1[1] = 6;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_31(object sender, RoutedEventArgs e)
         {
             Click1[0] = 3;
             Click1[1] = 7;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
 
         }
@@ -384,8 +414,8 @@ namespace ChessOnline
         {
             Click1[0] = 4;
             Click1[1] = 0;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
 
         }
@@ -394,8 +424,8 @@ namespace ChessOnline
         {
             Click1[0] = 4;
             Click1[1] = 1;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
         }
 
@@ -403,8 +433,8 @@ namespace ChessOnline
         {
             Click1[0] = 4;
             Click1[1] = 2;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
         }
 
@@ -412,8 +442,8 @@ namespace ChessOnline
         {
             Click1[0] = 4;
             Click1[1] = 3;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
         }
 
@@ -421,8 +451,8 @@ namespace ChessOnline
         {
             Click1[0] = 4;
             Click1[1] = 4;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
 
         }
@@ -431,8 +461,8 @@ namespace ChessOnline
         {
             Click1[0] = 4;
             Click1[1] = 5;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
         }
 
@@ -440,8 +470,8 @@ namespace ChessOnline
         {
             Click1[0] = 4;
             Click1[1] = 6;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
 
         }
@@ -450,8 +480,8 @@ namespace ChessOnline
         {
             Click1[0] = 4;
             Click1[1] = 7;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
 
         }
@@ -460,8 +490,8 @@ namespace ChessOnline
         {
             Click1[0] = 5;
             Click1[1] = 0;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
         }
 
@@ -469,8 +499,8 @@ namespace ChessOnline
         {
             Click1[0] = 5;
             Click1[1] = 1;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
 
         }
 
@@ -478,176 +508,181 @@ namespace ChessOnline
         {
             Click1[0] = 5;
             Click1[1] = 2;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_43(object sender, RoutedEventArgs e)
         {
             Click1[0] = 5;
             Click1[1] = 3;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_44(object sender, RoutedEventArgs e)
         {
             Click1[0] = 5;
             Click1[1] = 4;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_45(object sender, RoutedEventArgs e)
         {
             Click1[0] = 5;
             Click1[1] = 5;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_46(object sender, RoutedEventArgs e)
         {
             Click1[0] = 5;
             Click1[1] = 6;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_47(object sender, RoutedEventArgs e)
         {
             Click1[0] = 5;
             Click1[1] = 7;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_48(object sender, RoutedEventArgs e)
         {
             Click1[0] = 6;
             Click1[1] = 0;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_49(object sender, RoutedEventArgs e)
         {
             Click1[0] = 6;
             Click1[1] = 1;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_50(object sender, RoutedEventArgs e)
         {
             Click1[0] = 6;
             Click1[1] = 2;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_51(object sender, RoutedEventArgs e)
         {
             Click1[0] = 6;
             Click1[1] = 3;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_52(object sender, RoutedEventArgs e)
         {
             Click1[0] = 6;
             Click1[1] = 4;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_53(object sender, RoutedEventArgs e)
         {
             Click1[0] = 6;
             Click1[1] = 5;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_54(object sender, RoutedEventArgs e)
         {
             Click1[0] = 6;
             Click1[1] = 6;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_55(object sender, RoutedEventArgs e)
         {
             Click1[0] = 6;
             Click1[1] = 7;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_56(object sender, RoutedEventArgs e)
         {
             Click1[0] = 7;
             Click1[1] = 0;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_57(object sender, RoutedEventArgs e)
         {
             Click1[0] = 7;
             Click1[1] = 1;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_58(object sender, RoutedEventArgs e)
         {
             Click1[0] = 7;
             Click1[1] = 2;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_59(object sender, RoutedEventArgs e)
         {
             Click1[0] = 7;
             Click1[1] = 3;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_60(object sender, RoutedEventArgs e)
         {
             Click1[0] = 7;
             Click1[1] = 4;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_61(object sender, RoutedEventArgs e)
         {
             Click1[0] = 7;
             Click1[1] = 5;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_62(object sender, RoutedEventArgs e)
         {
             Click1[0] = 7;
             Click1[1] = 6;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
         private void Button_Click_63(object sender, RoutedEventArgs e)
         {
             Click1[0] = 7;
             Click1[1] = 7;
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]); OnClick(); 
+        }
+
+        private void Button_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+
         }
     }
 
