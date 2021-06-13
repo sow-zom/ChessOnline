@@ -9,7 +9,10 @@
     <Grid x:Name="MainGrid">
         <Grid Background="Peru">
 
-            <Button ClickMode="Release" Background="White" HorizontalAlignment="Left" Margin="181,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click">
+
+
+
+            <Button  Background="White" HorizontalAlignment="Left" Margin="181,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click">
                 <StackPanel>
                     <Image x:Name="a8"/>
                 </StackPanel>
@@ -44,11 +47,61 @@
                     <Image x:Name="g8"/>
                 </StackPanel>
             </Button>
+
             <Button Background="Brown" HorizontalAlignment="Left" Margin="881,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_7">
                 <StackPanel>
                     <Image x:Name="h8"/>
                 </StackPanel>
             </Button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <Button x:Name="t1" Background="Brown" HorizontalAlignment="Left" Margin="281,23,0,0" VerticalAlignment="Top" Height="100" Width="100" RenderTransformOrigin="0.5,0.5" >
+              
+            </Button>
+            <Button x:Name="t2" Background="White" HorizontalAlignment="Left" Margin="381,23,0,0" VerticalAlignment="Top" Height="100" Width="100">
+                <StackPanel>
+
+                </StackPanel>
+            </Button>
+            <Button x:Name="t3" Background="Brown" HorizontalAlignment="Left" Margin="481,23,0,0" VerticalAlignment="Top" Height="100" Width="100">
+                <StackPanel>
+
+                </StackPanel>
+            </Button>
+            <Button x:Name="t4"  Background="White" HorizontalAlignment="Left" Margin="581,23,0,0" VerticalAlignment="Top" Height="100" Width="100">
+                <StackPanel>
+
+                </StackPanel>
+            </Button>
+            <Button x:Name="t5" Background="Brown" HorizontalAlignment="Left" Margin="681,23,0,0" VerticalAlignment="Top" Height="100" Width="100">
+                <StackPanel>
+
+                </StackPanel>
+            </Button>
+            <Button x:Name="t6" Background="White" HorizontalAlignment="Left" Margin="781,23,0,0" VerticalAlignment="Top" Height="100" Width="100">
+                <StackPanel>
+
+                </StackPanel>
+            </Button>
+            <Button x:Name="t7" Background="Brown" HorizontalAlignment="Left" Margin="881,23,0,0" VerticalAlignment="Top" Height="100" Width="100">
+                <StackPanel>
+
+                </StackPanel>
+            </Button>
+
+
+
 
             <Button Background="Brown" HorizontalAlignment="Left" Margin="181,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_8">
                 <StackPanel>
@@ -336,6 +389,40 @@
                     <Image x:Name="h1"/>
                 </StackPanel>
             </Button>
+
+
+
+
+            <!--<Button x:Name="t0_Copy" Opacity="0.6" HorizontalAlignment="Left" Margin="181,73,0,0" VerticalAlignment="Top" Height="50" Width="50">
+                <StackPanel/>
+            </Button>
+            <Button x:Name="t0_Copy1" Background="Green" HorizontalAlignment="Left" Margin="230,23,0,0" VerticalAlignment="Top" Height="50" Width="50">
+                <StackPanel/>
+            </Button>
+            <Button x:Name="t0_Copy2" Background="Green" HorizontalAlignment="Left" Margin="230,73,0,0" VerticalAlignment="Top" Height="50" Width="50">
+                <StackPanel/>
+            </Button>
+            <Button x:Name="t0_Copy4" Background="Green" HorizontalAlignment="Left" Margin="181,23,0,0" VerticalAlignment="Top" Height="50" Width="50">
+                <StackPanel/>
+            </Button>
+            <Button x:Name="t0_Copy3" Background="Green" HorizontalAlignment="Left" Margin="281,73,0,0" VerticalAlignment="Top" Height="50" Width="50">
+                <StackPanel/>
+            </Button>
+            <Button x:Name="t0_Copy5" Background="Green" HorizontalAlignment="Left" Margin="281,23,0,0" VerticalAlignment="Top" Height="50" Width="50">
+                <StackPanel/>
+            </Button>
+            <Button x:Name="t0_Copy6" Background="Green" HorizontalAlignment="Left" Margin="331,23,0,0" VerticalAlignment="Top" Height="50" Width="50">
+                <StackPanel/>
+            </Button>
+            <Button x:Name="t0_Copy7" Background="Green" HorizontalAlignment="Left" Margin="331,73,0,0" VerticalAlignment="Top" Height="50" Width="50">
+                <StackPanel/>
+            </Button>-->
+
+
+
+
+
+
             <ListBox x:Name="test" Margin="1239,23,69,747"/>
             <TextBlock HorizontalAlignment="Left" Margin="181,823,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top"/>
             <Grid Background="Bisque" HorizontalAlignment="Left" Height="28" Margin="181,822,0,0" VerticalAlignment="Top" Width="810">
@@ -362,9 +449,11 @@
             <Grid Background="Bisque" HorizontalAlignment="Left" Height="852" Margin="980,-2,0,0" VerticalAlignment="Top" Width="29"/>
             <ListBox x:Name="test2" Margin="1239,173,69,654"/>
             <ListBox x:Name="test3" Margin="1239,285,69,547"/>
+            <ListBox x:Name="test4" Margin="1239,354,69,478"/>
 
 
         </Grid>
+
 
     </Grid>
 </Window>

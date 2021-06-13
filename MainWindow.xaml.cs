@@ -17,14 +17,14 @@ namespace ChessOnline
 {
     public partial class MainWindow : Window
     {
-        int[,] board = new int[8, 8]
+       public int[,] board = new int[8, 8]
 
            {
             {-2,-3,-4,-5,-6,-4,-3,-2 },
             {-1,-1,-1,-1,-1,-1,-1,-1 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 3,-3, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 1, 1, 1, 1, 1, 1, 1, 1 },
             { 2, 3, 4, 5, 6, 4, 3, 2 },
@@ -32,10 +32,13 @@ namespace ChessOnline
         public int[] Click1 = {1, 1};
         bool Click1Made = false;
         bool FigrAreSelect = false;
-        int fromWhere = -1;
-        int fromWhere1 = -1;
+        int fromWhere = 1;
+        int fromWhere1 = 1;
         int whereTo = -1;
         int whereTo1 = -1;
+
+        public bool? turnMove = true;
+
         BitmapImage Img_W_King = new BitmapImage(new Uri(@"image\KingWHITE.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_W_Queen = new BitmapImage(new Uri(@"image\QueenWHITE.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_W_Bishop = new BitmapImage(new Uri(@"image\BishopWHITE.png", UriKind.RelativeOrAbsolute));
@@ -47,12 +50,14 @@ namespace ChessOnline
 		BitmapImage Img_B_Queen = new BitmapImage(new Uri(@"image\QueenBLACK.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_B_Bishop = new BitmapImage(new Uri(@"image\BishopBLACK.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_B_Knight = new BitmapImage(new Uri(@"image\KnightBLACK.png", UriKind.RelativeOrAbsolute));
-		BitmapImage Img_B_Rook = new BitmapImage(new Uri(@"image\RookBLACK.png", UriKind.RelativeOrAbsolute));
+		//BitmapImage Img_B_Rook = new BitmapImage(new Uri(@"image\RookBLACK.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_B_Pawn = new BitmapImage(new Uri(@"image\PawnBLACK.png", UriKind.RelativeOrAbsolute));
 
 		BitmapImage Img_W_SuperPawn = new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_B_SuperPawn = new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
-		
+
+        BitmapImage Img_B_Rook =  new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
+
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -68,6 +73,7 @@ namespace ChessOnline
         {
             test2.ItemsSource = board[i,j].ToString();
             test3.ItemsSource = Click1Made.ToString();
+            
         }
 
         BitmapImage drawByNum(int i)
@@ -105,12 +111,38 @@ namespace ChessOnline
 			a2.Source = drawByNum(board[6, 0]); b2.Source = drawByNum(board[6, 1]); c2.Source = drawByNum(board[6, 2]); d2.Source = drawByNum(board[6, 3]); e2.Source = drawByNum(board[6, 4]); f2.Source = drawByNum(board[6, 5]); g2.Source = drawByNum(board[6, 6]); h2.Source = drawByNum(board[6, 7]);
 			a1.Source = drawByNum(board[7, 0]); b1.Source = drawByNum(board[7, 1]); c1.Source = drawByNum(board[7, 2]); d1.Source = drawByNum(board[7, 3]); e1.Source = drawByNum(board[7, 4]); f1.Source = drawByNum(board[7, 5]); g1.Source = drawByNum(board[7, 6]); h1.Source = drawByNum(board[7, 7]);
 		}
+        int selFigr(int i)
+        {
+            if(turnMove == true)
+                switch (i)
+                {
+                    case 1: return Move.Move_PawnW(board, fromWhere1, fromWhere, whereTo1, whereTo);
+                    case 2: return Move.Move_RookW(board, fromWhere1, fromWhere, whereTo1, whereTo);
+                    case 3: return Move.Move_KnightW(board, fromWhere1, fromWhere, whereTo1, whereTo);
+                    case 4: return Move.Move_BishopW(board, fromWhere1, fromWhere, whereTo1, whereTo);
+                    case 5: return Move.Move_QueenW(board, fromWhere1, fromWhere, whereTo1, whereTo);
+                    //case 6: return Img_W_King;
 
-        private void SecCkick() 
-        { 
+                    //case 7: return Img_W_SuperPawn;
+                    default: test3.ItemsSource = "LOOOOOL"; return 0;
+                }
             
+            if (turnMove == false)
+                switch (i)
+                {
+                    case -1: return Move.Move_PawnB(board, fromWhere1, fromWhere, whereTo1, whereTo);
+                    case -2: return Move.Move_RookB(board, fromWhere1, fromWhere, whereTo1, whereTo);
+                    case -3: return Move.Move_KnightB (board, fromWhere1, fromWhere, whereTo1, whereTo);
+                    case -4: return Move.Move_BishopB(board, fromWhere1, fromWhere, whereTo1, whereTo);
+                    case -5: return Move.Move_QueenB(board, fromWhere1, fromWhere, whereTo1, whereTo);
+                    //case -6: return Img_B_King;
+
+                    //case -7: return Img_B_SuperPawn;
+                    default: test3.ItemsSource = "LOOOOOL"; return 0;
+            }
+            return 0;
         }
-        void OnClick() 
+        void OnClick() // коли я це написав як це працювало знав я і бог, тепер знає тільки бог. 
         {
             
             if (Click1Made) 
@@ -123,12 +155,18 @@ namespace ChessOnline
             {
                 whereTo = Click1[0];
                 whereTo1 = Click1[1];
-                if (FigrAreSelect)
+                if (selFigr(board[fromWhere, fromWhere1])==1)
                 {
                     int temp = board[whereTo, whereTo1];
+                    int temp2 = board[fromWhere, fromWhere1];
+                    
                     board[whereTo, whereTo1] = board[fromWhere, fromWhere1];
                     if (temp != board[fromWhere, fromWhere1]) board[fromWhere, fromWhere1] = 0;
                     draw();
+                    //if (temp2 > 0) turnMove = false;
+                    //if (temp2 < 0) turnMove = true;
+                    turnMove = !turnMove;
+                    test4.ItemsSource = turnMove.ToString();
                 }
             }
 
