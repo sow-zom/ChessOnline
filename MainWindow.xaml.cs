@@ -24,7 +24,7 @@ namespace ChessOnline
             {-1,-1,-1,-1,-1,-1,-1,-1 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 3,-3, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 1, 1, 1, 1, 1, 1, 1, 1 },
             { 2, 3, 4, 5, 6, 4, 3, 2 },
@@ -36,7 +36,8 @@ namespace ChessOnline
         int fromWhere1 = 1;
         int whereTo = -1;
         int whereTo1 = -1;
-
+        int SuperPawn0 = -1;
+        
         public bool? turnMove = true;
 
         BitmapImage Img_W_King = new BitmapImage(new Uri(@"image\KingWHITE.png", UriKind.RelativeOrAbsolute));
@@ -50,13 +51,13 @@ namespace ChessOnline
 		BitmapImage Img_B_Queen = new BitmapImage(new Uri(@"image\QueenBLACK.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_B_Bishop = new BitmapImage(new Uri(@"image\BishopBLACK.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_B_Knight = new BitmapImage(new Uri(@"image\KnightBLACK.png", UriKind.RelativeOrAbsolute));
-		//BitmapImage Img_B_Rook = new BitmapImage(new Uri(@"image\RookBLACK.png", UriKind.RelativeOrAbsolute));
+		BitmapImage Img_B_Rook = new BitmapImage(new Uri(@"image\RookBLACK.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_B_Pawn = new BitmapImage(new Uri(@"image\PawnBLACK.png", UriKind.RelativeOrAbsolute));
 
 		BitmapImage Img_W_SuperPawn = new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
 		BitmapImage Img_B_SuperPawn = new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
 
-        BitmapImage Img_B_Rook =  new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
+        //BitmapImage Img_B_Rook =  new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
 
 		public MainWindow()
 		{
@@ -102,7 +103,8 @@ namespace ChessOnline
 		}
 		void draw()
 		{
-			a8.Source = drawByNum(board[0, 0]); b8.Source = drawByNum(board[0, 1]); c8.Source = drawByNum(board[0, 2]); d8.Source = drawByNum(board[0, 3]); e8.Source = drawByNum(board[0, 4]); f8.Source = drawByNum(board[0, 5]); g8.Source = drawByNum(board[0, 6]); h8.Source = drawByNum(board[0, 7]);
+           
+            a8.Source = drawByNum(board[0, 0]); b8.Source = drawByNum(board[0, 1]); c8.Source = drawByNum(board[0, 2]); d8.Source = drawByNum(board[0, 3]); e8.Source = drawByNum(board[0, 4]); f8.Source = drawByNum(board[0, 5]); g8.Source = drawByNum(board[0, 6]); h8.Source = drawByNum(board[0, 7]);
 			a7.Source = drawByNum(board[1, 0]); b7.Source = drawByNum(board[1, 1]); c7.Source = drawByNum(board[1, 2]); d7.Source = drawByNum(board[1, 3]); e7.Source = drawByNum(board[1, 4]); f7.Source = drawByNum(board[1, 5]); g7.Source = drawByNum(board[1, 6]); h7.Source = drawByNum(board[1, 7]);
 			a6.Source = drawByNum(board[2, 0]); b6.Source = drawByNum(board[2, 1]); c6.Source = drawByNum(board[2, 2]); d6.Source = drawByNum(board[2, 3]); e6.Source = drawByNum(board[2, 4]); f6.Source = drawByNum(board[2, 5]); g6.Source = drawByNum(board[2, 6]); h6.Source = drawByNum(board[2, 7]);
 			a5.Source = drawByNum(board[3, 0]); b5.Source = drawByNum(board[3, 1]); c5.Source = drawByNum(board[3, 2]); d5.Source = drawByNum(board[3, 3]); e5.Source = drawByNum(board[3, 4]); f5.Source = drawByNum(board[3, 5]); g5.Source = drawByNum(board[3, 6]); h5.Source = drawByNum(board[3, 7]);
@@ -110,7 +112,41 @@ namespace ChessOnline
 			a3.Source = drawByNum(board[5, 0]); b3.Source = drawByNum(board[5, 1]); c3.Source = drawByNum(board[5, 2]); d3.Source = drawByNum(board[5, 3]); e3.Source = drawByNum(board[5, 4]); f3.Source = drawByNum(board[5, 5]); g3.Source = drawByNum(board[5, 6]); h3.Source = drawByNum(board[5, 7]);
 			a2.Source = drawByNum(board[6, 0]); b2.Source = drawByNum(board[6, 1]); c2.Source = drawByNum(board[6, 2]); d2.Source = drawByNum(board[6, 3]); e2.Source = drawByNum(board[6, 4]); f2.Source = drawByNum(board[6, 5]); g2.Source = drawByNum(board[6, 6]); h2.Source = drawByNum(board[6, 7]);
 			a1.Source = drawByNum(board[7, 0]); b1.Source = drawByNum(board[7, 1]); c1.Source = drawByNum(board[7, 2]); d1.Source = drawByNum(board[7, 3]); e1.Source = drawByNum(board[7, 4]); f1.Source = drawByNum(board[7, 5]); g1.Source = drawByNum(board[7, 6]); h1.Source = drawByNum(board[7, 7]);
-		}
+
+            for(int i=0; i<=7; i++) 
+            {
+                if (board[0, i] == 1)
+                {
+                    SuperPawnW(i);
+                }
+            }
+            for (int i = 0; i <= 7; i++)
+            {
+                if (board[7, i] == -1)
+                {
+                    SuperPawnB(i);
+                }
+            }
+        }
+
+        void SuperPawnW(int i) 
+        {
+            t1.Visibility = b3.Visibility;
+            t2.Visibility = b3.Visibility;
+            t3.Visibility = b3.Visibility;
+            t4.Visibility = b3.Visibility;
+            SuperPawn0 = i;
+            turnMove = null;
+        }
+        void SuperPawnB(int i)
+        {
+            t1b.Visibility = b3.Visibility;
+            t2b.Visibility = b3.Visibility;
+            t3b.Visibility = b3.Visibility;
+            t4b.Visibility = b3.Visibility;
+            SuperPawn0 = i;
+            turnMove = null;
+        }
         int selFigr(int i)
         {
             if(turnMove == true)
@@ -121,9 +157,8 @@ namespace ChessOnline
                     case 3: return Move.Move_KnightW(board, fromWhere1, fromWhere, whereTo1, whereTo);
                     case 4: return Move.Move_BishopW(board, fromWhere1, fromWhere, whereTo1, whereTo);
                     case 5: return Move.Move_QueenW(board, fromWhere1, fromWhere, whereTo1, whereTo);
-                    //case 6: return Img_W_King;
+                    case 6: return King_Move.Move_KingW(board, fromWhere1, fromWhere, whereTo1, whereTo);
 
-                    //case 7: return Img_W_SuperPawn;
                     default: test3.ItemsSource = "LOOOOOL"; return 0;
                 }
             
@@ -137,7 +172,6 @@ namespace ChessOnline
                     case -5: return Move.Move_QueenB(board, fromWhere1, fromWhere, whereTo1, whereTo);
                     //case -6: return Img_B_King;
 
-                    //case -7: return Img_B_SuperPawn;
                     default: test3.ItemsSource = "LOOOOOL"; return 0;
             }
             return 0;
@@ -718,9 +752,97 @@ namespace ChessOnline
             testItem(Click1[0], Click1[1]); OnClick(); 
         }
 
-        private void Button_GotMouseCapture(object sender, MouseEventArgs e)
-        {
+        //private void Button_GotMouseCapture(object sender, MouseEventArgs e)
+        //{
 
+        //}
+
+        private void t1_Click(object sender, RoutedEventArgs e)
+        {
+            board[0, SuperPawn0] = 5;
+            turnMove = false;
+            t1.Visibility = t1b.Visibility;
+            t2.Visibility = t1b.Visibility;
+            t3.Visibility = t1b.Visibility;
+            t4.Visibility = t1b.Visibility;
+            draw();
+        }
+
+        private void t2_Click(object sender, RoutedEventArgs e)
+        {
+            board[0, SuperPawn0] = 2;
+            turnMove = false;
+            t1.Visibility = t1b.Visibility;
+            t2.Visibility = t1b.Visibility;
+            t3.Visibility = t1b.Visibility;
+            t4.Visibility = t1b.Visibility;
+            draw();
+        }
+
+        private void t3_Click(object sender, RoutedEventArgs e)
+        {
+            board[0, SuperPawn0] = 4;
+            turnMove = false;
+            t1.Visibility = t1b.Visibility;
+            t2.Visibility = t1b.Visibility;
+            t3.Visibility = t1b.Visibility;
+            t4.Visibility = t1b.Visibility;
+            draw();
+        }
+
+        private void t4_Click(object sender, RoutedEventArgs e)
+        {
+            board[0, SuperPawn0] = 3;
+            turnMove = false;
+            t1.Visibility = t1b.Visibility;
+            t2.Visibility = t1b.Visibility;
+            t3.Visibility = t1b.Visibility;
+            t4.Visibility = t1b.Visibility;
+            draw();
+        }
+
+        private void t1b_Click(object sender, RoutedEventArgs e)
+        {
+            board[7, SuperPawn0] = -5;
+            turnMove = true;
+            t1b.Visibility = t1.Visibility;
+            t2b.Visibility = t1.Visibility;
+            t3b.Visibility = t1.Visibility;
+            t4b.Visibility = t1.Visibility;
+            draw();
+        }
+
+        private void t2b_Click(object sender, RoutedEventArgs e)
+        {
+            board[7, SuperPawn0] = -2;
+            turnMove = true;
+            t1b.Visibility = t1.Visibility;
+            t2b.Visibility = t1.Visibility;
+            t3b.Visibility = t1.Visibility;
+            t4b.Visibility = t1.Visibility;
+            draw();
+        }
+
+        private void t3b_Click(object sender, RoutedEventArgs e)
+        {
+            board[7, SuperPawn0] = -4;
+            turnMove = true;
+            t1b.Visibility = t1.Visibility;
+            t2b.Visibility = t1.Visibility;
+            t3b.Visibility = t1.Visibility;
+            t4b.Visibility = t1.Visibility;
+            draw();
+        }
+
+        private void t4b_Click(object sender, RoutedEventArgs e)
+        {
+            board[7, SuperPawn0] = -3;
+            turnMove = true;
+            t1b.Visibility = t1.Visibility;
+            t2b.Visibility = t1.Visibility;
+            t3b.Visibility = t1.Visibility;
+            t4b.Visibility = t1.Visibility;
+            draw();
         }
     }
 

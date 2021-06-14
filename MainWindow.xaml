@@ -54,55 +54,6 @@
                 </StackPanel>
             </Button>
 
-
-
-
-
-
-
-
-
-
-
-
-
-            <Button x:Name="t1" Background="Brown" HorizontalAlignment="Left" Margin="281,23,0,0" VerticalAlignment="Top" Height="100" Width="100" RenderTransformOrigin="0.5,0.5" >
-              
-            </Button>
-            <Button x:Name="t2" Background="White" HorizontalAlignment="Left" Margin="381,23,0,0" VerticalAlignment="Top" Height="100" Width="100">
-                <StackPanel>
-
-                </StackPanel>
-            </Button>
-            <Button x:Name="t3" Background="Brown" HorizontalAlignment="Left" Margin="481,23,0,0" VerticalAlignment="Top" Height="100" Width="100">
-                <StackPanel>
-
-                </StackPanel>
-            </Button>
-            <Button x:Name="t4"  Background="White" HorizontalAlignment="Left" Margin="581,23,0,0" VerticalAlignment="Top" Height="100" Width="100">
-                <StackPanel>
-
-                </StackPanel>
-            </Button>
-            <Button x:Name="t5" Background="Brown" HorizontalAlignment="Left" Margin="681,23,0,0" VerticalAlignment="Top" Height="100" Width="100">
-                <StackPanel>
-
-                </StackPanel>
-            </Button>
-            <Button x:Name="t6" Background="White" HorizontalAlignment="Left" Margin="781,23,0,0" VerticalAlignment="Top" Height="100" Width="100">
-                <StackPanel>
-
-                </StackPanel>
-            </Button>
-            <Button x:Name="t7" Background="Brown" HorizontalAlignment="Left" Margin="881,23,0,0" VerticalAlignment="Top" Height="100" Width="100">
-                <StackPanel>
-
-                </StackPanel>
-            </Button>
-
-
-
-
             <Button Background="Brown" HorizontalAlignment="Left" Margin="181,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_8">
                 <StackPanel>
                     <Image x:Name="a7"/>
@@ -393,7 +344,7 @@
 
 
 
-            <!--<Button x:Name="t0_Copy" Opacity="0.6" HorizontalAlignment="Left" Margin="181,73,0,0" VerticalAlignment="Top" Height="50" Width="50">
+            <!--<Button x:Name="t0_Copy"  HorizontalAlignment="Left" Margin="181,73,0,0" VerticalAlignment="Top" Height="50" Width="50">
                 <StackPanel/>
             </Button>
             <Button x:Name="t0_Copy1" Background="Green" HorizontalAlignment="Left" Margin="230,23,0,0" VerticalAlignment="Top" Height="50" Width="50">
@@ -420,6 +371,51 @@
 
 
 
+            <Button x:Name="t1" Visibility="Hidden" Background="Yellow"  HorizontalAlignment="Left" Margin="381,70,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="t1_Click">
+                <StackPanel>
+                    <Image Source="image\QueenWHITE.png"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="t2" Visibility="Hidden" Background="Yellow"  HorizontalAlignment="Left" Margin="481,70,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="t2_Click">
+                <StackPanel>
+                    <Image Source="image\RookWHITE.png"></Image>
+                </StackPanel>
+            </Button>
+            <Button x:Name="t3" Visibility="Hidden" Background="Yellow"  HorizontalAlignment="Left" Margin="581,70,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="t3_Click">
+                <StackPanel>
+                    <Image Source="image\BishopWHITE.png"></Image>
+                </StackPanel>
+            </Button>
+            <Button x:Name="t4" Visibility="Hidden" Background="Yellow"  HorizontalAlignment="Left" Margin="681,70,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="t4_Click">
+                <StackPanel>
+                    <Image Source="image\KnightWHITE.png"></Image>
+                </StackPanel>
+            </Button>
+
+
+
+
+            <Button x:Name="t1b" Visibility="Hidden" Background="Yellow"  HorizontalAlignment="Left" Margin="381,670,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="t1b_Click">
+                <StackPanel>
+                    <Image Source="image\QueenBLACK.png"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="t2b" Visibility="Hidden" Background="Yellow"  HorizontalAlignment="Left" Margin="481,670,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="t2b_Click">
+                <StackPanel>
+                    <Image Source="image\RookBLACK.png"></Image>
+                </StackPanel>
+            </Button>
+            <Button x:Name="t3b" Visibility="Hidden" Background="Yellow"  HorizontalAlignment="Left" Margin="581,670,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="t3b_Click">
+                <StackPanel>
+                    <Image Source="image\BishopBLACK.png"></Image>
+                </StackPanel>
+            </Button>
+            <Button x:Name="t4b" Visibility="Hidden" Background="Yellow"  HorizontalAlignment="Left" Margin="681,670,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="t4b_Click">
+                <StackPanel>
+                    <Image Source="image\KnightBLACK.png"></Image>
+                </StackPanel>
+            </Button>
+
 
 
 
@@ -444,12 +440,14 @@
                 <Label Content="6" HorizontalAlignment="Center" Margin="0,264,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="0.558,-0.054"/>
                 <Label Content="7" HorizontalAlignment="Center" Margin="0,163,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="0.558,-0.054"/>
                 <Label Content="8" HorizontalAlignment="Center" Margin="0,62,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="0.558,-0.054"/>
+                <Label Content="7" HorizontalAlignment="Center" Margin="0,163,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="0.558,-0.054"/>
             </Grid>
             <Grid Background="Bisque" HorizontalAlignment="Left" Height="28" Margin="180,-2,0,0" VerticalAlignment="Top" Width="805"/>
             <Grid Background="Bisque" HorizontalAlignment="Left" Height="852" Margin="980,-2,0,0" VerticalAlignment="Top" Width="29"/>
             <ListBox x:Name="test2" Margin="1239,173,69,654"/>
             <ListBox x:Name="test3" Margin="1239,285,69,547"/>
             <ListBox x:Name="test4" Margin="1239,354,69,478"/>
+
 
 
         </Grid>
