@@ -20,14 +20,23 @@ namespace ChessOnline
        public int[,] board = new int[8, 8]
 
            {
-            {-2,-3,-4,-5,-6,-4,-3,-2 },
-            {-1,-1,-1,-1,-1,-1,-1,-1 },
+            //{-2,-3,-4,-5,-6, 0, 0,-2 },
+            //{-1,-1,-1,-1,-1,-1,-1,-1 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 1, 1, 1, 1, 1, 1, 1, 1 },
+            //{ 2, 3, 4, 5, 6, 4, 3, 2 },
+
+            {-2, 0, 0, 0,-6, 0, 0,-2 },
+            {-1,-1,-1,-1,-1,-1,1,-1 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 1, 1, 1, 1, 1, 1, 1, 1 },
-            { 2, 3, 4, 5, 6, 4, 3, 2 },
+            { 1, 1, 1, 1, 1, 1, -2, 1 },
+            { 2, 0, 0, 0, 6, 0, 0, 2 },
            };
         public int[] Click1 = {1, 1};
         bool Click1Made = false;
@@ -170,7 +179,7 @@ namespace ChessOnline
                     case -3: return Move.Move_KnightB (board, fromWhere1, fromWhere, whereTo1, whereTo);
                     case -4: return Move.Move_BishopB(board, fromWhere1, fromWhere, whereTo1, whereTo);
                     case -5: return Move.Move_QueenB(board, fromWhere1, fromWhere, whereTo1, whereTo);
-                    //case -6: return Img_B_King;
+                    case -6: return King_Move.Move_KingB(board, fromWhere1, fromWhere, whereTo1, whereTo);
 
                     default: test3.ItemsSource = "LOOOOOL"; return 0;
             }
@@ -178,7 +187,8 @@ namespace ChessOnline
         }
         void OnClick() // коли я це написав як це працювало знав я і бог, тепер знає тільки бог. 
         {
-            
+            King_Move.Checkforblack(board);
+            King_Move.Checkforwhite(board);
             if (Click1Made) 
             {
                 fromWhere = Click1[0];
