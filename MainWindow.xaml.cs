@@ -29,14 +29,14 @@ namespace ChessOnline
             //{ 1, 1, 1, 1, 1, 1, 1, 1 },
             //{ 2, 3, 4, 5, 6, 4, 3, 2 },
 
-            {-2, 0, 0, 0,-6, 0, 0,-2 },
+            {0, 0, 0, 0, 0, 0, 0,-2 },
             {-1,-1,-1,-1,-1,-1,1,-1 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 1, 1, 1, 1, 1, 1, -2, 1 },
-            { 2, 0, 0, 0, 6, 0, 0, 2 },
+            { 2, 0, 0, 0, 0, 0, 0, 0},
            };
         public int[] Click1 = {1, 1};
         bool Click1Made = false;
@@ -187,8 +187,6 @@ namespace ChessOnline
         }
         void OnClick() // коли я це написав як це працювало знав я і бог, тепер знає тільки бог. 
         {
-            King_Move.Checkforblack(board);
-            King_Move.Checkforwhite(board);
             if (Click1Made) 
             {
                 fromWhere = Click1[0];
@@ -199,6 +197,9 @@ namespace ChessOnline
             {
                 whereTo = Click1[0];
                 whereTo1 = Click1[1];
+
+                King_Move.Checkforblack(board);
+                King_Move.Checkforwhite(board);
                 if (selFigr(board[fromWhere, fromWhere1])==1)
                 {
                     int temp = board[whereTo, whereTo1];

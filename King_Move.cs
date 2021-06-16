@@ -721,12 +721,15 @@ namespace ChessOnline
 							if (board[i,j] == 1)
 							{
 							//MessageBox.Show("Lol");
+
 							ok = Check_PawnW(board, j, i, kingx, kingy);
-							}
+							//MessageBox.Show(ok.ToString() + "test PawnW");
+						}
 							if (board[i,j] == 2)
 							{
 								ok = Check_TowerW(board, j, i, kingx, kingy);
-							}
+								MessageBox.Show(ok.ToString() + "test RookW");
+						}
 							if (board[i,j] == 3)
 							{
 								ok = Check_KnightW(board, j, i, kingx, kingy);
@@ -761,6 +764,7 @@ namespace ChessOnline
 			if (ox - 1 >= 0 && oy - 1 >= 0 && ny == oy - 1 && nx == ox - 1 && board[ny, nx] >= 0)
 			{
 				int ok = Check_White(board, ox - 1, oy - 1);
+				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					return 1;  // хід наліво вверх
@@ -769,6 +773,7 @@ namespace ChessOnline
 			if (oy - 1 >= 0 && nx == ox && ny == oy - 1 && board[ny, nx] >= 0)
 			{
 				int ok = Check_White(board, ox, oy - 1);
+				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					return 1; // хід вверх
@@ -777,6 +782,7 @@ namespace ChessOnline
 			if (oy - 1 >= 0 && ox + 1 < 8 && nx == ox + 1 && ny == oy - 1 && board[ny, nx] >= 0)
 			{
 				int ok = Check_White(board, ox + 1, oy - 1);
+				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					return 1; // хід направо вверх
@@ -785,6 +791,7 @@ namespace ChessOnline
 			if (ox + 1 < 8 && ny == oy && nx == ox + 1 && board[ny, nx] >= 0)
 			{
 				int ok = Check_White(board, ox + 1, oy);
+				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					return 1; // хід направо
@@ -793,6 +800,7 @@ namespace ChessOnline
 			if (ox + 1 < 8 && oy + 1 < 8 && ny == oy + 1 && nx == ox + 1 && board[ny, nx] >= 0)
 			{
 				int ok = Check_White(board, ox + 1, oy + 1);
+				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					return 1; // хід направо вниз 
@@ -801,6 +809,7 @@ namespace ChessOnline
 			if (oy + 1 < 8 && ny == oy + 1 && nx == ox && board[ny, nx] >= 0)
 			{
 				int ok = Check_White(board, ox, oy + 1);
+				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					return 1; // хід вниз
@@ -809,6 +818,7 @@ namespace ChessOnline
 			if (ox - 1 >= 0 && oy + 1 < 8 && nx == ox - 1 && ny == oy + 1 && board[ny, nx] >= 0)
 			{
 				int ok = Check_White(board, ox - 1, oy + 1);
+				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					return 1; // хід наліво вниз
@@ -817,6 +827,7 @@ namespace ChessOnline
 			if (ox - 1 >= 0 && ny == oy && nx == ox - 1 && board[ny, nx] >= 0)
 			{
 				int ok = Check_White(board, ox - 1, oy);
+				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					return 1; // хід наліво
@@ -824,20 +835,20 @@ namespace ChessOnline
 			}
 			if (kingW_first_move == 0 && right_towerW_first_move == 0 && board[7,5] == 0 && board[7,6] == 0 && ny == 7 && nx == 6)
 				{
-				MessageBox.Show("test");
+				//MessageBox.Show("test");
 				int ok = 1;
 					ok = Check_White(board, 4, 7);
 					if (ok == 1)
 					{
-					MessageBox.Show(ok.ToString() + "1 test");
+					//MessageBox.Show(ok.ToString() + "1 test");
 						ok = Check_White(board, 5, 7);
 						if (ok == 1)
 						{
-						MessageBox.Show(ok.ToString() + "2 test");
+						//MessageBox.Show(ok.ToString() + "2 test");
 						ok = Check_White(board, 6, 7);
 							if (ok == 1)
 							{
-							MessageBox.Show(ok.ToString() + "3 test");
+							//MessageBox.Show(ok.ToString() + "3 test");
 							board[7,7] = 0;
 								board[7,5] = 2;
 								kingW_first_move = 1;
@@ -893,7 +904,8 @@ namespace ChessOnline
 							if (board[i,j] == -2)
 							{
 								ok = Check_TowerB(board, j, i, kingx, kingy);
-							}
+								MessageBox.Show(ok.ToString() + "test RookB");
+						}
 							if (board[i,j] == -3)
 							{
 								ok = Check_KnightB(board, j, i, kingx, kingy);
@@ -1054,12 +1066,15 @@ namespace ChessOnline
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    if (board[i, j] == 6)
-                    {
+                    if (i == 0 && j == 0)
+
+					{
 						if (true)
 						{
 							//MessageBox.Show(i.ToString() +  "- i" + j.ToString()+" - j  Check for white");
-							MessageBox.Show(Check_White(board, i, j).ToString() + " mmmmm");
+							MessageBox.Show(Check_White(board, 7,7).ToString() + " mmmmm");
+							MessageBox.Show(i.ToString() + " iiiiiiii");
+							MessageBox.Show(j.ToString() + " jjjjjjjjj");
 						}
                         break;
                     }
@@ -1074,12 +1089,14 @@ namespace ChessOnline
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    if (board[i, j] == -6)
+                    if (i==7&&j==7)
                     {
 						if (/*Check_Black(board, i, j) == 1*/ true)
 						{
 							//MessageBox.Show(i.ToString() + "- i" + j.ToString() + " - j  Check for black");
-							MessageBox.Show(Check_Black(board, i, j).ToString()+ " mmmmm");
+							MessageBox.Show(Check_Black(board, 0, 0).ToString()+ " mmmmm");
+							//MessageBox.Show(board[i, j].ToString() + " board[i, j]");
+							//MessageBox.Show(j.ToString() + " jjjjjjjjj");
 						}
 						break;
                     }
