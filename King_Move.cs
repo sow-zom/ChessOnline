@@ -728,7 +728,7 @@ namespace ChessOnline
 							if (board[i,j] == 2)
 							{
 								ok = Check_TowerW(board, j, i, kingx, kingy);
-								MessageBox.Show(ok.ToString() + "test RookW");
+								//MessageBox.Show(ok.ToString() + "test RookW");
 						}
 							if (board[i,j] == 3)
 							{
@@ -890,7 +890,7 @@ namespace ChessOnline
 			// перевірка на шах білому королю
 			static int Check_White(int[,] board, int kingx, int kingy)
 			{
-				int ok = 0;
+			int ok = 0;
 				for (int i = 0; i < 8; i++)
 				{
 					for (int j = 0; j < 8; j++)
@@ -904,7 +904,7 @@ namespace ChessOnline
 							if (board[i,j] == -2)
 							{
 								ok = Check_TowerB(board, j, i, kingx, kingy);
-								MessageBox.Show(ok.ToString() + "test RookB");
+								//MessageBox.Show(ok.ToString() + "test RookB");
 						}
 							if (board[i,j] == -3)
 							{
@@ -924,7 +924,6 @@ namespace ChessOnline
 							}
 							if (ok == 1)
 							{
-								//	std::cout << "da" << "\n";
 								return 0;
 							}
 						}
@@ -1060,48 +1059,58 @@ namespace ChessOnline
 			}
 
         //отримати координати білого короля
-        public static void Checkforwhite(int[,] board)
+        public static int Checkforwhite(int[,] board)
         {
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    if (i == 0 && j == 0)
+                    if (board[i, j] == 6)
 
-					{
-						if (true)
-						{
-							//MessageBox.Show(i.ToString() +  "- i" + j.ToString()+" - j  Check for white");
-							MessageBox.Show(Check_White(board, 7,7).ToString() + " mmmmm");
-							MessageBox.Show(i.ToString() + " iiiiiiii");
-							MessageBox.Show(j.ToString() + " jjjjjjjjj");
-						}
+                    {
+                        board[i, j] = 0;
+                        if (Check_White(board, j, i) == 0)
+                        {
+                            //MessageBox.Show(Check_White(board, i, j).ToString() + "Check_White");
+                            board[i, j] = 6;
+                            //MessageBox.Show(Check_White(board, i, j).ToString() + "Check_White");
+                            MessageBox.Show("Check for white");
+							return 1;
+                        }
+                        board[i, j] = 6;
+
                         break;
                     }
                 }
             }
-        }
+			return 0;
 
-		//отримати координати чорного короля
-		public static void Checkforblack(int[,] board)
+			//MessageBox.Show(Check_White(board, 4, 7).ToString() + "Check_White test again");
+		}
+
+        //отримати координати чорного короля
+        public static int Checkforblack(int[,] board)
         {
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    if (i==7&&j==7)
+                    if (board[i,j]== -6)
                     {
-						if (/*Check_Black(board, i, j) == 1*/ true)
+						board[i, j] = 0;
+						if (Check_Black(board, j, i) == 0)
 						{
-							//MessageBox.Show(i.ToString() + "- i" + j.ToString() + " - j  Check for black");
-							MessageBox.Show(Check_Black(board, 0, 0).ToString()+ " mmmmm");
-							//MessageBox.Show(board[i, j].ToString() + " board[i, j]");
-							//MessageBox.Show(j.ToString() + " jjjjjjjjj");
+							board[i, j] = -6;
+							
+							MessageBox.Show("Check for black");
+							return 1;
 						}
+						board[i, j] = -6;
 						break;
                     }
                 }
             }
-        }
+			return 0;
+		}
     };
 	}

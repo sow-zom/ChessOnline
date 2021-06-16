@@ -29,14 +29,14 @@ namespace ChessOnline
             //{ 1, 1, 1, 1, 1, 1, 1, 1 },
             //{ 2, 3, 4, 5, 6, 4, 3, 2 },
 
-            {0, 0, 0, 0, 0, 0, 0,-2 },
-            {-1,-1,-1,-1,-1,-1,1,-1 },
+            { 0, 0, 0, 0,-6, 0, 0,-2 },
+            {-1,-1,-1,-1,-1,-1, 1,-1 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 1, 1, 1, 1, 1, 1, -2, 1 },
-            { 2, 0, 0, 0, 0, 0, 0, 0},
+            { 2, 0, 0, 0, 6, 0, 0, 0},
            };
         public int[] Click1 = {1, 1};
         bool Click1Made = false;
@@ -136,6 +136,7 @@ namespace ChessOnline
                     SuperPawnB(i);
                 }
             }
+
         }
 
         void SuperPawnW(int i) 
@@ -187,6 +188,7 @@ namespace ChessOnline
         }
         void OnClick() // коли я це написав як це працювало знав я і бог, тепер знає тільки бог. 
         {
+            //int[,] board_save = board;
             if (Click1Made) 
             {
                 fromWhere = Click1[0];
@@ -198,15 +200,36 @@ namespace ChessOnline
                 whereTo = Click1[0];
                 whereTo1 = Click1[1];
 
-                King_Move.Checkforblack(board);
-                King_Move.Checkforwhite(board);
+                
                 if (selFigr(board[fromWhere, fromWhere1])==1)
                 {
+                    int[,] board_save = new int[8, 8];
+
+                    Array.Copy(board, board_save, board.Length);
                     int temp = board[whereTo, whereTo1];
                     int temp2 = board[fromWhere, fromWhere1];
                     
                     board[whereTo, whereTo1] = board[fromWhere, fromWhere1];
                     if (temp != board[fromWhere, fromWhere1]) board[fromWhere, fromWhere1] = 0;
+
+                    
+
+                    if (turnMove == true) 
+                    {
+                        if (King_Move.Checkforwhite(board) == 1) 
+                        {
+                            board = board_save;
+                        }
+                    }
+                    if (turnMove == false)
+                    {
+                        if (King_Move.Checkforblack(board) == 1)
+                        {
+                            board = board_save;
+                        }
+                    }
+                    King_Move.Checkforblack(board);
+                    King_Move.Checkforwhite(board);
                     draw();
                     //if (temp2 > 0) turnMove = false;
                     //if (temp2 < 0) turnMove = true;
@@ -776,6 +799,8 @@ namespace ChessOnline
             t2.Visibility = t1b.Visibility;
             t3.Visibility = t1b.Visibility;
             t4.Visibility = t1b.Visibility;
+            King_Move.Checkforblack(board);
+            King_Move.Checkforwhite(board);
             draw();
         }
 
@@ -787,6 +812,8 @@ namespace ChessOnline
             t2.Visibility = t1b.Visibility;
             t3.Visibility = t1b.Visibility;
             t4.Visibility = t1b.Visibility;
+            King_Move.Checkforblack(board);
+            King_Move.Checkforwhite(board);
             draw();
         }
 
@@ -798,6 +825,8 @@ namespace ChessOnline
             t2.Visibility = t1b.Visibility;
             t3.Visibility = t1b.Visibility;
             t4.Visibility = t1b.Visibility;
+            King_Move.Checkforblack(board);
+            King_Move.Checkforwhite(board);
             draw();
         }
 
@@ -809,6 +838,8 @@ namespace ChessOnline
             t2.Visibility = t1b.Visibility;
             t3.Visibility = t1b.Visibility;
             t4.Visibility = t1b.Visibility;
+            King_Move.Checkforblack(board);
+            King_Move.Checkforwhite(board);
             draw();
         }
 
@@ -820,6 +851,8 @@ namespace ChessOnline
             t2b.Visibility = t1.Visibility;
             t3b.Visibility = t1.Visibility;
             t4b.Visibility = t1.Visibility;
+            King_Move.Checkforblack(board);
+            King_Move.Checkforwhite(board);
             draw();
         }
 
@@ -831,6 +864,8 @@ namespace ChessOnline
             t2b.Visibility = t1.Visibility;
             t3b.Visibility = t1.Visibility;
             t4b.Visibility = t1.Visibility;
+            King_Move.Checkforblack(board);
+            King_Move.Checkforwhite(board);
             draw();
         }
 
@@ -842,6 +877,8 @@ namespace ChessOnline
             t2b.Visibility = t1.Visibility;
             t3b.Visibility = t1.Visibility;
             t4b.Visibility = t1.Visibility;
+            King_Move.Checkforblack(board);
+            King_Move.Checkforwhite(board);
             draw();
         }
 
@@ -853,6 +890,8 @@ namespace ChessOnline
             t2b.Visibility = t1.Visibility;
             t3b.Visibility = t1.Visibility;
             t4b.Visibility = t1.Visibility;
+            King_Move.Checkforblack(board);
+            King_Move.Checkforwhite(board);
             draw();
         }
     }
