@@ -1,4 +1,4 @@
-﻿<Window x:Class="ChessOnline.MainWindow"
+﻿<Window x:Class="ChessOnline.MainWindow" WindowStartupLocation="CenterOwner"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -447,6 +447,8 @@
             <ListBox x:Name="test2" Margin="1239,173,69,654"/>
             <ListBox x:Name="test3" Margin="1239,285,69,547"/>
             <ListBox x:Name="test4" Margin="1239,354,69,478"/>
+            <ListBox x:Name="test5" Margin="1239,485,69,347"/>
+            <ListBox x:Name="test6" Margin="1239,673,69,159"/>
 
 
 

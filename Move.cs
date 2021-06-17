@@ -17,6 +17,9 @@ namespace ChessOnline
 {
    public static class  Move
     {
+		public static int test_move = 0;
+		public static int en_passantW = -1;
+		public static int en_passantB = -1;
 		public static int Move_PawnW(int[,] board, int ox, int oy, int nx, int ny)
 		{
 
@@ -24,7 +27,9 @@ namespace ChessOnline
 			{
 				if ((ny == oy - 1 && nx == ox &&  board[oy - 1, ox] == 0) || (ny == oy - 2 && nx == ox && board[oy - 1, ox] == 0 && board[oy - 2, ox] == 0))
 				{
-					return 1;
+					//en_passantW = ox;
+					return 3;
+					
 				}
 			}
 			else if (ny == oy - 1 && nx == ox && board[oy - 1, ox] == 0)// õ³ä íà îäíó êë³òèíêó
@@ -50,7 +55,38 @@ namespace ChessOnline
 					}
 				}
 			}
-            return 0;
+			if (ox != 0 && oy != 0)
+			{
+				if (board[oy - 1, ox - 1] == 0)// àòàêà íàë³âî
+				{
+					if (ny == oy - 1 && nx == ox - 1)
+					{
+
+						if (ny == 2 && nx == en_passantB)
+						{
+							//en_passantB = -1;
+							//MessageBox.Show("wdawdawd");
+							return 2;
+						}
+					}
+				}
+			}
+			if (ox != 7 && oy != 0)
+			{
+				if (board[oy - 1, ox + 1] == 0)// àòàêà íàïðàâî
+				{
+					if (ny == oy - 1 && nx == ox + 1)
+					{
+						if (ny == 2 && nx == en_passantB)
+						{
+							//en_passantB = -1;
+							//MessageBox.Show("wdawdawd");
+							return 2;
+						}
+					}
+				}
+			}
+			return 0;
 		}
 		public static int Move_PawnB(int[,] board, int ox, int oy, int nx, int ny)
 		{
@@ -58,7 +94,8 @@ namespace ChessOnline
 			{
 				if ((ny == oy + 1 && nx == ox && board[oy + 1, ox] == 0) || (ny == oy + 2 && nx == ox && board[oy + 1, ox] == 0 && board[oy + 2, ox] == 0))
 				{
-					return 1;
+					//en_passantB = ox;
+					return 3;
 				}
 			}
 			else if (ny == oy + 1 && nx == ox && board[oy + 1, ox] == 0)// õ³ä íà îäíó êë³òèíêó
@@ -67,14 +104,16 @@ namespace ChessOnline
 			}
 			if (ox != 0 && oy != 7)
 			{
-				if (board[oy + 1, ox - 1] > 0)// àòàêà íàë³âî
-			{
+				if ((board[oy + 1, ox - 1] > 0))// àòàêà íàë³âî
+				{
 				if (ny == oy + 1 && nx == ox - 1)
 				{
 					return 1;
 				}
+				//if(ox == en_passantW && oy == 6) { }
 			}
 		}
+
 			if (ox != 7 && oy != 7)
 			{
 				if (board[oy + 1, ox + 1] > 0)// àòàêà íàïðàâî
@@ -83,6 +122,43 @@ namespace ChessOnline
 					{
 						return 1;
 					}
+				}
+			}
+			
+			
+			
+			if (ox != 7 && oy != 7)
+			{
+				if (board[oy + 1, ox + 1] == 0)// àòàêà íàïðàâî
+				{
+					if (ny == oy + 1 && nx == ox + 1)
+					{
+						if (ny == 5 && nx == en_passantW)
+						{
+							//en_passantW = -1;
+							return 2;
+						}
+					}
+				}
+			}
+	
+			
+			
+			
+			
+			if (ox != 0 && oy != 7)
+			{
+				if ((board[oy + 1, ox - 1] == 0))// àòàêà íàë³âî
+				{
+					if (ny == oy+1 && nx == ox - 1)
+					{
+						if (ny == 5 && nx == en_passantW)
+						{
+							//en_passantW = -1;
+							return 2;
+						}
+					}
+					//if(ox == en_passantW && oy == 6) { }
 				}
 			}
 			return 0;
@@ -94,7 +170,9 @@ namespace ChessOnline
 			{
 				if (board[oy,i] <= 0 && (nx == i && ny == oy))
 				{
-					return 1;
+					if (test_move == 0 && ox == 0) { King_Move.left_towerW_first_move = 1;MessageBox.Show(" King_Move.left_towerW_first_move = 1"); }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerW_first_move = 1; MessageBox.Show(" King_Move.right_towerW_first_move = 1"); }
+				return 1;
 				}
 				else if (board[oy,i] != 0)
 				{
@@ -105,6 +183,8 @@ namespace ChessOnline
 			{
 				if (board[i,ox] <= 0 && (ny == i && nx == ox))
 				{
+					if (test_move == 0 && ox == 0) { King_Move.left_towerW_first_move = 1;MessageBox.Show(" King_Move.left_towerW_first_move = 1"); }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerW_first_move = 1; MessageBox.Show(" King_Move.right_towerW_first_move = 1"); }
 					return 1;
 				}
 				else if (board[i,ox] != 0)
@@ -116,6 +196,8 @@ namespace ChessOnline
 			{
 				if (board[oy,i] <= 0 && (ny == oy && nx == i))
 				{
+					if (test_move == 0 && ox == 0) { King_Move.left_towerW_first_move = 1;MessageBox.Show(" King_Move.left_towerW_first_move = 1"); }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerW_first_move = 1; MessageBox.Show(" King_Move.right_towerW_first_move = 1"); }
 					return 1;
 				}
 				else if (board[oy,i] != 0)
@@ -127,10 +209,13 @@ namespace ChessOnline
 			{
 				if (board[i,ox] <= 0 && (ny == i && nx == ox))
 				{
+					if (test_move == 0 && ox == 0) { King_Move.left_towerW_first_move = 1;MessageBox.Show(" King_Move.left_towerW_first_move = 1"); }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerW_first_move = 1; MessageBox.Show(" King_Move.right_towerW_first_move = 1"); }
 					return 1;
 				}
 				else if (board[i,ox] != 0)
 				{
+
 					break;
 				}
 			}
@@ -142,6 +227,8 @@ namespace ChessOnline
 			{
 				if (board[oy, i] >= 0 && (nx == i && ny == oy))
 				{
+					if (test_move == 0 && ox == 0) { King_Move.left_towerB_first_move = 1; MessageBox.Show(" King_Move.left_towerB_first_move = 1"); }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerB_first_move = 1; MessageBox.Show(" King_Move.right_towerB_first_move = 1"); }
 					return 1;
 				}
 				else if (board[oy, i] != 0)
@@ -153,6 +240,8 @@ namespace ChessOnline
 			{
 				if (board[i, ox] >= 0 && (ny == i && nx == ox))
 				{
+					if (test_move == 0 && ox == 0) { King_Move.left_towerB_first_move = 1; MessageBox.Show(" King_Move.left_towerB_first_move = 1"); }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerB_first_move = 1; MessageBox.Show(" King_Move.right_towerB_first_move = 1"); }
 					return 1;
 				}
 				else if (board[i, ox] != 0)
@@ -164,6 +253,8 @@ namespace ChessOnline
 			{
 				if (board[oy, i] >= 0 && (ny == oy && nx == i))
 				{
+					if (test_move == 0 && ox == 0) { King_Move.left_towerB_first_move = 1; MessageBox.Show(" King_Move.left_towerB_first_move = 1"); }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerB_first_move = 1; MessageBox.Show(" King_Move.right_towerB_first_move = 1"); }
 					return 1;
 				}
 				else if (board[oy, i] != 0)
@@ -175,6 +266,8 @@ namespace ChessOnline
 			{
 				if (board[i, ox] >= 0 && (ny == i && nx == ox))
 				{
+					if (test_move == 0 && ox == 0) { King_Move.left_towerB_first_move = 1; MessageBox.Show(" King_Move.left_towerB_first_move = 1"); }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerB_first_move = 1; MessageBox.Show(" King_Move.right_towerB_first_move = 1"); }
 					return 1;
 				}
 				else if (board[i, ox] != 0)

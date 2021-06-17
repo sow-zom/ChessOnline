@@ -767,6 +767,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingW_first_move = 1;
 					return 1;  // хід наліво вверх
 				}
 			}
@@ -776,6 +777,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingW_first_move = 1;
 					return 1; // хід вверх
 				}
 			}
@@ -785,6 +787,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingW_first_move = 1;
 					return 1; // хід направо вверх
 				}
 			}
@@ -794,6 +797,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
+					if(Move.test_move==0)kingW_first_move = 1;
 					return 1; // хід направо
 				}
 			}
@@ -803,6 +807,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingW_first_move = 1;
 					return 1; // хід направо вниз 
 				}
 			}
@@ -812,6 +817,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingW_first_move = 1;
 					return 1; // хід вниз
 				}
 			}
@@ -821,6 +827,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingW_first_move = 1;
 					return 1; // хід наліво вниз
 				}
 			}
@@ -830,6 +837,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingW_first_move = 1;
 					return 1; // хід наліво
 				}
 			}
@@ -859,7 +867,7 @@ namespace ChessOnline
 					}
 				}
 				// Рокірока білими наліво
-				if (kingW_first_move == 0 && right_towerW_first_move == 0 && board[7,3] == 0 && board[7,2] == 0 && board[7,1] == 0 && ny == 7 && nx == 2)
+				if (kingW_first_move == 0 && left_towerW_first_move == 0 && board[7,3] == 0 && board[7,2] == 0 && board[7,1] == 0 && ny == 7 && nx == 2)
 				{
 					int ok = 1;
 					ok = Check_White(board, 4, 7);
@@ -944,6 +952,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingB_first_move = 1;
 					return 1;  // хід наліво вверх
 				}
 			}
@@ -954,6 +963,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingB_first_move = 1;
 					return 1; // хід вверх
 				}
 			}
@@ -963,6 +973,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingB_first_move = 1;
 					return 1; // хід направо вверх
 				}
 			}
@@ -972,6 +983,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingB_first_move = 1;
 					return 1; // хід направо
 				}
 			}
@@ -981,6 +993,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingB_first_move = 1;
 					return 1; // хід направо вниз
 				}
 			}
@@ -990,6 +1003,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingB_first_move = 1;
 					return 1; // хід вниз
 				}
 			}
@@ -999,6 +1013,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingB_first_move = 1;
 					return 1; // хід наліво вниз
 				}
 			}
@@ -1008,6 +1023,7 @@ namespace ChessOnline
 				MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
+					if (Move.test_move == 0) kingB_first_move = 1;
 					return 1; // хід наліво
 				}
 			}

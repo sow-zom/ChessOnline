@@ -29,14 +29,14 @@ namespace ChessOnline
             { 1, 1, 1, 1, 1, 1, 1, 1 },
             { 2, 3, 4, 5, 6, 4, 3, 2 },
 
-            //{ 0, 0, 0, 0,-6, 0, 0,-2 },
-            //{-1,-1,-1,-1,-1,-1, 1,-1 },
+            //{-2, 0, 0, 0,-6, 0, 0,-2 },
+            //{-1,-1,-1,-1,-1,-1,-1,-1 },
             //{ 0, 0, 0, 0, 0, 0, 0, 0 },
             //{ 0, 0, 0, 0, 0, 0, 0, 0 },
             //{ 0, 0, 0, 0, 0, 0, 0, 0 },
             //{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 1, 1, 1, 1, 1, 1, -2, 1 },
-            //{ 2, 0, 0, 0, 6, 0, 0, 0},
+            //{ 1, 1, 1, 1, 1, 1, 1, 1 },
+            //{ 2, 0, 0, 0, 6, 0, 0, 2},
            };
         public int[] Click1 = {1, 1};
         bool Click1Made = false;
@@ -190,6 +190,8 @@ namespace ChessOnline
         }
         void OnClick() // коли я це написав як це працювало знав я і бог, тепер знає тільки бог. 
         {
+            test5.ItemsSource = King_Move.right_towerW_first_move.ToString();
+            test6.ItemsSource = King_Move.left_towerW_first_move.ToString();
             //int[,] board_save = board;
             if (Click1Made) 
             {
@@ -202,23 +204,51 @@ namespace ChessOnline
                 whereTo = Click1[0];
                 whereTo1 = Click1[1];
 
-                
-                if (selFigr(board[fromWhere, fromWhere1])==1)
+
+                if ((selFigr(board[fromWhere, fromWhere1]) == 1) || (selFigr(board[fromWhere, fromWhere1]) == 2 || (selFigr(board[fromWhere, fromWhere1]) == 3)))
                 {
+
+                    if (selFigr(board[fromWhere, fromWhere1]) == 2)
+                    {
+                        if ((board[fromWhere, fromWhere1] == -1))
+                        {
+                            board[4, Move.en_passantW] = 0;
+                        }
+                        if ((board[fromWhere, fromWhere1] == 1))
+                        {
+                            board[3, Move.en_passantB] = 0;
+                        }
+                    }
+                    if (selFigr(board[fromWhere, fromWhere1]) == 3)
+                    {
+                        if ((board[fromWhere, fromWhere1] == 1))
+                        {
+                            Move.en_passantW = fromWhere1;
+                        }
+                        else Move.en_passantW = -1;
+                        if ((board[fromWhere, fromWhere1] == -1))
+                        {
+                            Move.en_passantB = fromWhere1;
+                        }
+                        else Move.en_passantB = -1;
+                    }
+                    else { Move.en_passantB = -1; Move.en_passantW = -1; }
+
+
                     int[,] board_save = new int[8, 8];
 
                     Array.Copy(board, board_save, board.Length);
                     int temp = board[whereTo, whereTo1];
                     int temp2 = board[fromWhere, fromWhere1];
-                    
+
                     board[whereTo, whereTo1] = board[fromWhere, fromWhere1];
                     if (temp != board[fromWhere, fromWhere1]) board[fromWhere, fromWhere1] = 0;
 
-                    
 
-                    if (turnMove == true) 
+
+                    if (turnMove == true)
                     {
-                        if (King_Move.Checkforwhite(board) == 1) 
+                        if (King_Move.Checkforwhite(board) == 1)
                         {
                             Array.Copy(board_save, board, board.Length);
                             turnMove = !turnMove;
@@ -237,10 +267,25 @@ namespace ChessOnline
                     draw();
                     //if (temp2 > 0) turnMove = false;
                     //if (temp2 < 0) turnMove = true;
-                   
+
                     turnMove = !turnMove;
                     Array.Copy(board, board_save, board.Length);
-                    MessageBox.Show(MateAndStaleMateCheck(board).ToString() + " Mateif1");
+
+                    if (turnMove == true)
+                    {
+                        if (MateAndStaleMateCheckW(board) > 0)
+                        {
+                            MatchRez on = new MatchRez(); on.Show();
+                        }
+                    } /*MessageBox.Show(MateAndStaleMateCheckW(board).ToString() + " MateWif1");*/
+                    if (turnMove == false)
+                    {
+                        if (MateAndStaleMateCheckB(board) > 0)
+                        {
+                            MatchRez on = new MatchRez(); on.ShowDialog();
+                        }
+                    }
+                        MessageBox.Show(MateAndStaleMateCheckB(board).ToString() + " MateBif1");
                     Array.Copy(board_save, board, board.Length);
                     test4.ItemsSource = turnMove.ToString();
                 }
@@ -285,8 +330,9 @@ namespace ChessOnline
             return 0;
         }
 
-        public int MateAndStaleMateCheck(int[,] board)
+        public int MateAndStaleMateCheckW(int[,] board)
         {
+            Move.test_move = 1;
 
             //int ok = 0;
             for (int i = 0; i < 8; i++)
@@ -309,10 +355,10 @@ namespace ChessOnline
                                         {
                                             if (leagalMove(board, j, i, i2, j2) == 0)
                                             {
-                                                //MessageBox.Show(board[i, j].ToString() + "tets__1");
-                                                //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
-
-                                                return 0;
+                                            //MessageBox.Show(board[i, j].ToString() + "tets__1");
+                                            //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            Move.test_move = 0;
+                                            return 0;
                                             }
                                         };
                                    
@@ -331,7 +377,7 @@ namespace ChessOnline
                                         {
                                             //MessageBox.Show(board[i, j].ToString() + "tets__");
                                             //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
-
+                                            Move.test_move = 0;
                                             return 0;
                                         }
                                     };
@@ -351,6 +397,7 @@ namespace ChessOnline
                                         {
                                             //MessageBox.Show(board[i, j].ToString() + "tets__");
                                             //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            Move.test_move = 0;
                                             return 0;
                                         }
                                     };
@@ -369,6 +416,7 @@ namespace ChessOnline
                                         {
                                             //MessageBox.Show(board[i, j].ToString() + "tets__");
                                             //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            Move.test_move = 0;
                                             return 0;
                                         }
                                     };
@@ -387,6 +435,7 @@ namespace ChessOnline
                                         {
                                             //MessageBox.Show(board[i, j].ToString() + "tets__");
                                             //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            Move.test_move = 0;
                                             return 0;
                                         }
                                     };
@@ -405,6 +454,7 @@ namespace ChessOnline
                                         {
                                             //MessageBox.Show(board[i, j].ToString() + "tets__");
                                             //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            Move.test_move = 0;
                                             return 0;
                                         }
                                     };
@@ -414,10 +464,149 @@ namespace ChessOnline
                     }
                 }
             }
-
-            return 1;
+            Move.test_move = 0;
+            if (King_Move.Checkforwhite(board) == 1) return 1;
+            else return 2;
         }
 
+        public int MateAndStaleMateCheckB(int[,] board)
+        {
+            Move.test_move = 1;
+            //int ok = 0;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j ");
+                    if (board[i, j] < 0)
+                    {
+                        //MessageBox.Show(board[i, j].ToString() + "tets_0");
+                        if (board[i, j] == -1)
+                        {
+                            for (int i2 = 0; i2 < 8; i2++)
+                            {
+                                for (int j2 = 0; j2 < 8; j2++)
+                                {
+                                    //MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+
+                                    if (Move.Move_PawnB(board, j, i, i2, j2) == 1)
+                                    {
+                                        if (leagalMove(board, j, i, i2, j2) == 0)
+                                        {
+                                            //MessageBox.Show(board[i, j].ToString() + "tets__1");
+                                            //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            Move.test_move = 0;
+                                            return 0;
+                                        }
+                                    };
+
+                                }
+                            }
+                        }
+                        if (board[i, j] == -2)
+                        {
+                            for (int i2 = 0; i2 < 8; i2++)
+                            {
+                                for (int j2 = 0; j2 < 8; j2++)
+                                {
+                                    if (Move.Move_RookB(board, j, i, i2, j2) == 1)
+                                    {
+                                        if (leagalMove(board, j, i, i2, j2) == 0)
+                                        {
+                                            //MessageBox.Show(board[i, j].ToString() + "tets__");
+                                            //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            Move.test_move = 0;
+                                            return 0;
+                                        }
+                                    };
+                                }
+                            }
+
+                        }
+                        if (board[i, j] == -3)
+                        {
+                            for (int i2 = 0; i2 < 8; i2++)
+                            {
+                                for (int j2 = 0; j2 < 8; j2++)
+                                {
+                                    if (Move.Move_KnightB(board, j, i, i2, j2) == 1)
+                                    {
+                                        if (leagalMove(board, j, i, i2, j2) == 0)
+                                        {
+                                            //MessageBox.Show(board[i, j].ToString() + "tets__");
+                                            //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            Move.test_move = 0;
+                                            return 0;
+                                        }
+                                    };
+                                }
+                            }
+                        }
+                        if (board[i, j] == -4)
+                        {
+                            for (int i2 = 0; i2 < 8; i2++)
+                            {
+                                for (int j2 = 0; j2 < 8; j2++)
+                                {
+                                    if (Move.Move_BishopB(board, j, i, i2, j2) == 1)
+                                    {
+                                        if (leagalMove(board, j, i, i2, j2) == 0)
+                                        {
+                                            //MessageBox.Show(board[i, j].ToString() + "tets__");
+                                            //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            Move.test_move = 0;
+                                            return 0;
+                                        }
+                                    };
+                                }
+                            }
+                        }
+                        if (board[i, j] == -5)
+                        {
+                            for (int i2 = 0; i2 < 8; i2++)
+                            {
+                                for (int j2 = 0; j2 < 8; j2++)
+                                {
+                                    if (Move.Move_QueenB(board, j, i, i2, j2) == 1)
+                                    {
+                                        if (leagalMove(board, j, i, i2, j2) == 0)
+                                        {
+                                            //MessageBox.Show(board[i, j].ToString() + "tets__");
+                                            //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            Move.test_move = 0;
+                                            return 0;
+                                        }
+                                    };
+                                }
+                            }
+                        }
+                        if (board[i, j] == -6)
+                        {
+                            for (int i2 = 0; i2 < 8; i2++)
+                            {
+                                for (int j2 = 0; j2 < 8; j2++)
+                                {
+                                    if (King_Move.Move_KingB(board, j, i, i2, j2) == 1)
+                                    {
+                                        if (leagalMove(board, j, i, i2, j2) == 0)
+                                        {
+                                            //MessageBox.Show(board[i, j].ToString() + "tets__");
+                                            //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            Move.test_move = 0;
+                                            return 0;
+                                        }
+                                    };
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            Move.test_move = 0;
+            if (King_Move.Checkforblack(board) == 1) return 1;
+            else return 2;
+
+        }
 
 
 
