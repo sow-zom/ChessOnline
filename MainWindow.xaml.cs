@@ -20,23 +20,23 @@ namespace ChessOnline
        public int[,] board = new int[8, 8]
 
            {
-            //{-2,-3,-4,-5,-6, 0, 0,-2 },
-            //{-1,-1,-1,-1,-1,-1,-1,-1 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 1, 1, 1, 1, 1, 1, 1, 1 },
-            //{ 2, 3, 4, 5, 6, 4, 3, 2 },
+            {-2,-3,-4,-5,-6,-4,-3,-2 },
+            {-1,-1,-1,-1,-1,-1,-1,-1 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 2, 3, 4, 5, 6, 4, 3, 2 },
 
-            { 0, 0, 0, 0,-6, 0, 0,-2 },
-            {-1,-1,-1,-1,-1,-1, 1,-1 },
-            { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 1, 1, 1, 1, 1, 1, -2, 1 },
-            { 2, 0, 0, 0, 6, 0, 0, 0},
+            //{ 0, 0, 0, 0,-6, 0, 0,-2 },
+            //{-1,-1,-1,-1,-1,-1, 1,-1 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 1, 1, 1, 1, 1, 1, -2, 1 },
+            //{ 2, 0, 0, 0, 6, 0, 0, 0},
            };
         public int[] Click1 = {1, 1};
         bool Click1Made = false;
@@ -86,6 +86,8 @@ namespace ChessOnline
             
         }
 
+       
+        
         BitmapImage drawByNum(int i)
 		{
 			switch (i)
@@ -218,14 +220,16 @@ namespace ChessOnline
                     {
                         if (King_Move.Checkforwhite(board) == 1) 
                         {
-                            board = board_save;
+                            Array.Copy(board_save, board, board.Length);
+                            turnMove = !turnMove;
                         }
                     }
                     if (turnMove == false)
                     {
                         if (King_Move.Checkforblack(board) == 1)
                         {
-                            board = board_save;
+                            Array.Copy(board_save, board, board.Length);
+                            turnMove = !turnMove;
                         }
                     }
                     King_Move.Checkforblack(board);
@@ -233,7 +237,11 @@ namespace ChessOnline
                     draw();
                     //if (temp2 > 0) turnMove = false;
                     //if (temp2 < 0) turnMove = true;
+                   
                     turnMove = !turnMove;
+                    Array.Copy(board, board_save, board.Length);
+                    MessageBox.Show(MateAndStaleMateCheck(board).ToString() + " Mateif1");
+                    Array.Copy(board_save, board, board.Length);
                     test4.ItemsSource = turnMove.ToString();
                 }
             }
@@ -241,7 +249,179 @@ namespace ChessOnline
 
         }
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+        int leagalMove(int[,] board, int fromWhere1, int fromWhere, int whereTo1, int whereTo)
+        {
+            int[,] board_save = new int[8, 8];
+
+            Array.Copy(board, board_save, board.Length);
+            int temp = board[whereTo, whereTo1];
+            int temp2 = board[fromWhere, fromWhere1];
+
+            board[whereTo, whereTo1] = board[fromWhere, fromWhere1];
+            if (temp != board[fromWhere, fromWhere1]) board[fromWhere, fromWhere1] = 0;
+
+
+
+            if (turnMove == true)
+            {
+                if (King_Move.Checkforwhite(board) == 1)
+                {
+                    //MessageBox.Show("nani?");
+                    Array.Copy(board_save, board, board.Length);
+                    //turnMove = !turnMove;
+                    return 1;
+                }
+            }
+            if (turnMove == false)
+            {
+                if (King_Move.Checkforblack(board) == 1)
+                {
+                    Array.Copy(board_save, board, board.Length);
+                    // turnMove = !turnMove;
+                    return 1;
+                }
+            }
+
+            return 0;
+        }
+
+        public int MateAndStaleMateCheck(int[,] board)
+        {
+
+            //int ok = 0;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j ");
+                    if (board[i, j] > 0)
+                    {
+                        //MessageBox.Show(board[i, j].ToString() + "tets_0");
+                        if (board[i, j] == 1)
+                        {
+                            for (int i2 = 0; i2 < 8; i2++)
+                            {
+                                for (int j2 = 0; j2 < 8; j2++)
+                                {
+                                    //MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                    
+                                        if (Move.Move_PawnW(board, j, i, i2, j2) == 1)
+                                        {
+                                            if (leagalMove(board, j, i, i2, j2) == 0)
+                                            {
+                                                //MessageBox.Show(board[i, j].ToString() + "tets__1");
+                                                //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+
+                                                return 0;
+                                            }
+                                        };
+                                   
+                                }
+                            }
+                        }
+                        if (board[i, j] == 2)
+                        {
+                           for (int i2 = 0; i2 < 8; i2++)
+                            {
+                                for (int j2 = 0; j2 < 8; j2++)
+                                {
+                                    if (Move.Move_RookW(board, j, i, i2, j2) == 1 ) 
+                                     {
+                                        if (leagalMove(board, j, i, i2, j2) == 0)
+                                        {
+                                            //MessageBox.Show(board[i, j].ToString() + "tets__");
+                                            //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+
+                                            return 0;
+                                        }
+                                    };
+                                }
+                            }
+                            
+                        }
+                        if (board[i, j] == 3)
+                        {
+                            for (int i2 = 0; i2 < 8; i2++)
+                            {
+                                for (int j2 = 0; j2 < 8; j2++)
+                                {
+                                    if (Move.Move_KnightW(board, j, i, i2, j2) == 1)
+                                    {
+                                        if (leagalMove(board, j, i, i2, j2) == 0)
+                                        {
+                                            //MessageBox.Show(board[i, j].ToString() + "tets__");
+                                            //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            return 0;
+                                        }
+                                    };
+                                }
+                            }
+                        }
+                        if (board[i, j] == 4)
+                        {
+                            for (int i2 = 0; i2 < 8; i2++)
+                            {
+                                for (int j2 = 0; j2 < 8; j2++)
+                                {
+                                    if (Move.Move_BishopW(board, j, i, i2, j2) == 1)
+                                    {
+                                        if (leagalMove(board, j, i, i2, j2) == 0)
+                                        {
+                                            //MessageBox.Show(board[i, j].ToString() + "tets__");
+                                            //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            return 0;
+                                        }
+                                    };
+                                }
+                            }
+                        }
+                        if (board[i, j] == 5)
+                        {
+                            for (int i2 = 0; i2 < 8; i2++)
+                            {
+                                for (int j2 = 0; j2 < 8; j2++)
+                                {
+                                    if (Move.Move_QueenW(board, j, i, i2, j2) == 1)
+                                    {
+                                        if (leagalMove(board, j, i, i2, j2) == 0)
+                                        {
+                                            //MessageBox.Show(board[i, j].ToString() + "tets__");
+                                            //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            return 0;
+                                        }
+                                    };
+                                }
+                            }
+                        }
+                        if (board[i, j] == 6)
+                        {
+                            for (int i2 = 0; i2 < 8; i2++)
+                            {
+                                for (int j2 = 0; j2 < 8; j2++)
+                                {
+                                    if (King_Move.Move_KingW(board, j, i, i2, j2) == 1)
+                                    {
+                                        if (leagalMove(board, j, i, i2, j2) == 0)
+                                        {
+                                            //MessageBox.Show(board[i, j].ToString() + "tets__");
+                                            //MessageBox.Show(i.ToString() + "= i " + j.ToString() + "= j "); MessageBox.Show(i2.ToString() + "= i2 " + j2.ToString() + "= j2 ");
+                                            return 0;
+                                        }
+                                    };
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return 1;
+        }
+
+
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
 		{
             //board[0, 0] = 7;
             //draw();

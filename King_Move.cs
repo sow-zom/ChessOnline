@@ -761,7 +761,7 @@ namespace ChessOnline
 			// хід чоним королем
 			public static int Move_KingW(int[,] board, int ox, int oy, int nx, int ny)
 			{
-			if (ox - 1 >= 0 && oy - 1 >= 0 && ny == oy - 1 && nx == ox - 1 && board[ny, nx] >= 0)
+			if (ox - 1 >= 0 && oy - 1 >= 0 && ny == oy - 1 && nx == ox - 1 && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox - 1, oy - 1);
 				MessageBox.Show("Move_KingW - " + ok.ToString());
@@ -770,7 +770,7 @@ namespace ChessOnline
 					return 1;  // хід наліво вверх
 				}
 			}
-			if (oy - 1 >= 0 && nx == ox && ny == oy - 1 && board[ny, nx] >= 0)
+			if (oy - 1 >= 0 && nx == ox && ny == oy - 1 && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox, oy - 1);
 				MessageBox.Show("Move_KingW - " + ok.ToString());
@@ -779,7 +779,7 @@ namespace ChessOnline
 					return 1; // хід вверх
 				}
 			}
-			if (oy - 1 >= 0 && ox + 1 < 8 && nx == ox + 1 && ny == oy - 1 && board[ny, nx] >= 0)
+			if (oy - 1 >= 0 && ox + 1 < 8 && nx == ox + 1 && ny == oy - 1 && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox + 1, oy - 1);
 				MessageBox.Show("Move_KingW - " + ok.ToString());
@@ -788,7 +788,7 @@ namespace ChessOnline
 					return 1; // хід направо вверх
 				}
 			}
-			if (ox + 1 < 8 && ny == oy && nx == ox + 1 && board[ny, nx] >= 0)
+			if (ox + 1 < 8 && ny == oy && nx == ox + 1 && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox + 1, oy);
 				MessageBox.Show("Move_KingW - " + ok.ToString());
@@ -797,7 +797,7 @@ namespace ChessOnline
 					return 1; // хід направо
 				}
 			}
-			if (ox + 1 < 8 && oy + 1 < 8 && ny == oy + 1 && nx == ox + 1 && board[ny, nx] >= 0)
+			if (ox + 1 < 8 && oy + 1 < 8 && ny == oy + 1 && nx == ox + 1 && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox + 1, oy + 1);
 				MessageBox.Show("Move_KingW - " + ok.ToString());
@@ -806,7 +806,7 @@ namespace ChessOnline
 					return 1; // хід направо вниз 
 				}
 			}
-			if (oy + 1 < 8 && ny == oy + 1 && nx == ox && board[ny, nx] >= 0)
+			if (oy + 1 < 8 && ny == oy + 1 && nx == ox && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox, oy + 1);
 				MessageBox.Show("Move_KingW - " + ok.ToString());
@@ -815,7 +815,7 @@ namespace ChessOnline
 					return 1; // хід вниз
 				}
 			}
-			if (ox - 1 >= 0 && oy + 1 < 8 && nx == ox - 1 && ny == oy + 1 && board[ny, nx] >= 0)
+			if (ox - 1 >= 0 && oy + 1 < 8 && nx == ox - 1 && ny == oy + 1 && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox - 1, oy + 1);
 				MessageBox.Show("Move_KingW - " + ok.ToString());
@@ -824,7 +824,7 @@ namespace ChessOnline
 					return 1; // хід наліво вниз
 				}
 			}
-			if (ox - 1 >= 0 && ny == oy && nx == ox - 1 && board[ny, nx] >= 0)
+			if (ox - 1 >= 0 && ny == oy && nx == ox - 1 && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox - 1, oy);
 				MessageBox.Show("Move_KingW - " + ok.ToString());
@@ -935,6 +935,9 @@ namespace ChessOnline
 			// хід білим королем
 			public static int Move_KingB(int[,] board, int ox, int oy, int nx, int ny)
 			{
+			
+				//ox - 1 >= 0 && oy - 1 >= 0 && ny == oy - 1 && nx == ox - 1 && board[ny][nx] <= 0
+				//ox - 1 >= 0 && oy - 1 >= 0 && ny == oy - 1 && nx == ox - 1 && board[ny,nx] >= 0
 			if (ox - 1 >= 0 && oy - 1 >= 0 && ny == oy - 1 && nx == ox - 1 && board[ny,nx] >= 0)
 			{
 				int ok = Check_Black(board, ox - 1, oy - 1);
@@ -1074,7 +1077,7 @@ namespace ChessOnline
                             //MessageBox.Show(Check_White(board, i, j).ToString() + "Check_White");
                             board[i, j] = 6;
                             //MessageBox.Show(Check_White(board, i, j).ToString() + "Check_White");
-                            MessageBox.Show("Check for white");
+                            //MessageBox.Show("Check for white");
 							return 1;
                         }
                         board[i, j] = 6;
@@ -1102,7 +1105,7 @@ namespace ChessOnline
 						{
 							board[i, j] = -6;
 							
-							MessageBox.Show("Check for black");
+							//MessageBox.Show("Check for black");
 							return 1;
 						}
 						board[i, j] = -6;
