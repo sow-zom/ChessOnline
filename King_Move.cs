@@ -764,7 +764,7 @@ namespace ChessOnline
 			if (ox - 1 >= 0 && oy - 1 >= 0 && ny == oy - 1 && nx == ox - 1 && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox - 1, oy - 1);
-				MessageBox.Show("Move_KingW - " + ok.ToString());
+				//MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingW_first_move = 1;
@@ -774,7 +774,7 @@ namespace ChessOnline
 			if (oy - 1 >= 0 && nx == ox && ny == oy - 1 && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox, oy - 1);
-				MessageBox.Show("Move_KingW - " + ok.ToString());
+				//MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingW_first_move = 1;
@@ -784,7 +784,7 @@ namespace ChessOnline
 			if (oy - 1 >= 0 && ox + 1 < 8 && nx == ox + 1 && ny == oy - 1 && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox + 1, oy - 1);
-				MessageBox.Show("Move_KingW - " + ok.ToString());
+				//MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingW_first_move = 1;
@@ -794,7 +794,7 @@ namespace ChessOnline
 			if (ox + 1 < 8 && ny == oy && nx == ox + 1 && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox + 1, oy);
-				MessageBox.Show("Move_KingW - " + ok.ToString());
+				//MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					if(Move.test_move==0)kingW_first_move = 1;
@@ -804,7 +804,7 @@ namespace ChessOnline
 			if (ox + 1 < 8 && oy + 1 < 8 && ny == oy + 1 && nx == ox + 1 && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox + 1, oy + 1);
-				MessageBox.Show("Move_KingW - " + ok.ToString());
+				//MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingW_first_move = 1;
@@ -814,7 +814,7 @@ namespace ChessOnline
 			if (oy + 1 < 8 && ny == oy + 1 && nx == ox && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox, oy + 1);
-				MessageBox.Show("Move_KingW - " + ok.ToString());
+				//MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingW_first_move = 1;
@@ -824,7 +824,7 @@ namespace ChessOnline
 			if (ox - 1 >= 0 && oy + 1 < 8 && nx == ox - 1 && ny == oy + 1 && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox - 1, oy + 1);
-				MessageBox.Show("Move_KingW - " + ok.ToString());
+				//MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingW_first_move = 1;
@@ -834,7 +834,7 @@ namespace ChessOnline
 			if (ox - 1 >= 0 && ny == oy && nx == ox - 1 && board[ny, nx] <= 0)
 			{
 				int ok = Check_White(board, ox - 1, oy);
-				MessageBox.Show("Move_KingW - " + ok.ToString());
+				//MessageBox.Show("Move_KingW - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingW_first_move = 1;
@@ -949,7 +949,7 @@ namespace ChessOnline
 			if (ox - 1 >= 0 && oy - 1 >= 0 && ny == oy - 1 && nx == ox - 1 && board[ny,nx] >= 0)
 			{
 				int ok = Check_Black(board, ox - 1, oy - 1);
-				MessageBox.Show("Move_KingB - " + ok.ToString());
+				//MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingB_first_move = 1;
@@ -960,7 +960,7 @@ namespace ChessOnline
 			{
 
 				int ok = Check_Black(board, ox, oy - 1);
-				MessageBox.Show("Move_KingB - " + ok.ToString());
+				//MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingB_first_move = 1;
@@ -970,7 +970,7 @@ namespace ChessOnline
 			if (oy - 1 >= 0 && ox + 1 < 8 && nx == ox + 1 && ny == oy - 1 && board[ny,nx] >= 0)
 			{
 				int ok = Check_Black(board, ox + 1, oy - 1);
-				MessageBox.Show("Move_KingB - " + ok.ToString());
+				//MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingB_first_move = 1;
@@ -980,7 +980,7 @@ namespace ChessOnline
 			if (ox + 1 < 8 && ny == oy && nx == ox + 1 && board[ny,nx] >= 0)
 			{
 				int ok = Check_Black(board, ox + 1, oy);
-				MessageBox.Show("Move_KingB - " + ok.ToString());
+				//MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingB_first_move = 1;
@@ -990,7 +990,7 @@ namespace ChessOnline
 			if (ox + 1 < 8 && oy + 1 < 8 && ny == oy + 1 && nx == ox + 1 && board[ny,nx] >= 0)
 			{
 				int ok = Check_Black(board, ox + 1, oy + 1);
-				MessageBox.Show("Move_KingB - " + ok.ToString());
+				//MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingB_first_move = 1;
@@ -1000,7 +1000,7 @@ namespace ChessOnline
 			if (oy + 1 < 8 && ny == oy + 1 && nx == ox && board[ny,nx] >= 0)
 			{
 				int ok = Check_Black(board, ox, oy + 1);
-				MessageBox.Show("Move_KingB - " + ok.ToString());
+				//MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingB_first_move = 1;
@@ -1010,7 +1010,7 @@ namespace ChessOnline
 			if (ox - 1 >= 0 && oy + 1 < 8 && nx == ox - 1 && ny == oy + 1 && board[ny,nx] >= 0)
 			{
 				int ok = Check_Black(board, ox - 1, oy + 1);
-				MessageBox.Show("Move_KingB - " + ok.ToString());
+				//MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingB_first_move = 1;
@@ -1020,7 +1020,7 @@ namespace ChessOnline
 			if (ox - 1 >= 0 && ny == oy && nx == ox - 1 && board[ny,nx] >= 0)
 			{
 				int ok = Check_Black(board, ox - 1, oy);
-				MessageBox.Show("Move_KingB - " + ok.ToString());
+				//MessageBox.Show("Move_KingB - " + ok.ToString());
 				if (ok == 1)
 				{
 					if (Move.test_move == 0) kingB_first_move = 1;

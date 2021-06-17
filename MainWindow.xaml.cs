@@ -20,23 +20,32 @@ namespace ChessOnline
        public int[,] board = new int[8, 8]
 
            {
-            {-2,-3,-4,-5,-6,-4,-3,-2 },
-            {-1,-1,-1,-1,-1,-1,-1,-1 },
-            { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 1, 1, 1, 1, 1, 1, 1, 1 },
-            { 2, 3, 4, 5, 6, 4, 3, 2 },
-
-            //{-2, 0, 0, 0,-6, 0, 0,-2 },
+            //{-2,-3,-4,-5,-6,-4,-3,-2 },
             //{-1,-1,-1,-1,-1,-1,-1,-1 },
             //{ 0, 0, 0, 0, 0, 0, 0, 0 },
             //{ 0, 0, 0, 0, 0, 0, 0, 0 },
             //{ 0, 0, 0, 0, 0, 0, 0, 0 },
             //{ 0, 0, 0, 0, 0, 0, 0, 0 },
             //{ 1, 1, 1, 1, 1, 1, 1, 1 },
+            //{ 2, 3, 4, 5, 6, 4, 3, 2 },
+
+            //{-2, 0, 0, 0,-6, 0, 0, 0 },
+            //{-1,-1,-1,-1,-1,-1, 2,-1 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 1, 1, 1, 1, 1, 1, 1, -2 },
             //{ 2, 0, 0, 0, 6, 0, 0, 2},
+
+             { 0, 0, 0, 0, 6, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, -5, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+             { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, -6, 0, 0, 0 },
            };
         public int[] Click1 = {1, 1};
         bool Click1Made = false;
@@ -75,7 +84,8 @@ namespace ChessOnline
             testItem(Click1[0], Click1[1]);
             draw();
 		}
-		public void testPos(string i, string j) 
+       
+        public void testPos(string i, string j) 
         {
             test.ItemsSource =  i + j;
         }
@@ -275,17 +285,19 @@ namespace ChessOnline
                     {
                         if (MateAndStaleMateCheckW(board) > 0)
                         {
-                            MatchRez on = new MatchRez(); on.Show();
+                            MatchRez on = new MatchRez(2, MateAndStaleMateCheckW(board)); on.ShowDialog();
+                            this.Close();
                         }
                     } /*MessageBox.Show(MateAndStaleMateCheckW(board).ToString() + " MateWif1");*/
                     if (turnMove == false)
                     {
                         if (MateAndStaleMateCheckB(board) > 0)
                         {
-                            MatchRez on = new MatchRez(); on.ShowDialog();
+                            MatchRez on = new MatchRez(1, MateAndStaleMateCheckB(board)); on.ShowDialog();
+                            this.Close();
                         }
                     }
-                        MessageBox.Show(MateAndStaleMateCheckB(board).ToString() + " MateBif1");
+                       // MessageBox.Show(MateAndStaleMateCheckB(board).ToString() + " MateBif1");
                     Array.Copy(board_save, board, board.Length);
                     test4.ItemsSource = turnMove.ToString();
                 }
