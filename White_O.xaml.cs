@@ -46,14 +46,14 @@ namespace ChessOnline
             { 1, 1, 1, 1, 1, 1, 1, 1 },
             { 2, 3, 4, 5, 6, 4, 3, 2 },
 
-            ////{-2, 0, 0, 0,-6, 0, 0, 0 },
-            ////{-1,-1,-1,-1,-1,-1, 2,-1 },
-            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            ////{ 1, 1, 1, 1, 1, 1, 1, -2 },
-            ////{ 2, 0, 0, 0, 6, 0, 0, 2},
+            //{-2, 0, 0, 0,-6, 0, 0, 0 },
+            //{-1,-1,-1,-1,-1,-1, 2,-1 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 1, 1, 1, 1, 1, 1, 1, -2 },
+            //{ 2, 0, 0, 0, 6, 0, 0, 2},
 
             // { 0, 0, 0, 0, 6, 0, 0, 0 },
             //{ 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -72,6 +72,12 @@ namespace ChessOnline
         int whereTo = -1;
         int whereTo1 = -1;
         int SuperPawn0 = -1;
+        string save_bd_board = "";
+        SetMove obj = new SetMove();
+
+
+        
+        //int firstRun = 1;
 
         public bool? turnMove = true;
 
@@ -98,6 +104,7 @@ namespace ChessOnline
         public White_O()
         {
 
+
             InitializeComponent();
             testPos(Click1[0].ToString(), Click1[1].ToString());
             testItem(Click1[0], Click1[1]);
@@ -106,89 +113,125 @@ namespace ChessOnline
 
             dt.Columns.Add("login");
             dt.Columns.Add("password");
+            
+            
             //string r = "";
 
-            SetOpBoard();
-            GetOpBoard();
+            //SetOpBoard();
+            //GetOpBoard();
 
 
             //r = ArrayToString(board_test);
 
         }
 
-        public int[,] board2 = new int[8, 8]
+        //public int[,] board2 = new int[8, 8]
 
-           {
-            //{-2,-3,-4,-5,-6,-4,-3,-2 },
-            //{-1,-1,-1,-1,-1,-1,-1,-1 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 1, 1, 1, 1, 1, 1, 1, 1 },
-            //{ 2, 3, 4, 5, 6, 4, 3, 2 },
+        //   {
+        //    //{-2,-3,-4,-5,-6,-4,-3,-2 },
+        //    //{-1,-1,-1,-1,-1,-1,-1,-1 },
+        //    //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+        //    //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+        //    //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+        //    //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+        //    //{ 1, 1, 1, 1, 1, 1, 1, 1 },
+        //    //{ 2, 3, 4, 5, 6, 4, 3, 2 },
 
-            ////{-2, 0, 0, 0,-6, 0, 0, 0 },
-            ////{-1,-1,-1,-1,-1,-1, 2,-1 },
-            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            ////{ 1, 1, 1, 1, 1, 1, 1, -2 },
-            ////{ 2, 0, 0, 0, 6, 0, 0, 2},
+        //    ////{-2, 0, 0, 0,-6, 0, 0, 0 },
+        //    ////{-1,-1,-1,-1,-1,-1, 2,-1 },
+        //    ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
+        //    ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
+        //    ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
+        //    ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
+        //    ////{ 1, 1, 1, 1, 1, 1, 1, -2 },
+        //    ////{ 2, 0, 0, 0, 6, 0, 0, 2},
 
-             { 0, 0, 0, 0, 6, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, -5, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0 },
-             { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, -6, 0, 0, 0 },
-           };
+        //     { 0, 0, 0, 0, 6, 0, 0, 0 },
+        //    { 0, 0, 0, 0, 0, 0, 0, 0 },
+        //    { 0, -5, 0, 0, 0, 0, 0, 0 },
+        //    { 0, 0, 0, 0, 0, 0, 0, 0 },
+        //    { 0, 0, 0, 0, 0, 0, 0, 0 },
+        //    { 0, 0, 0, 0, 0, 0, 0, 0 },
+        //     { 0, 0, 0, 0, 0, 0, 0, 0 },
+        //    { 0, 0, 0, 0, -6, 0, 0, 0 },
+        //   };
+        
+        
         async void SetOpBoard()
         {
-            //FirebaseResponse resp = await client.GetTaskAsync("Counter/node2");
-            //MoveC get = resp.ResultAs<MoveC>();
 
-            
         var data = new SetMove
             {
                 ID = "0",
-                Move = ArrayToString(board2),
+                Move = ArrayToString(board),
             };
-            
-
             SetResponse response = await client.SetTaskAsync("MoveData/" + data.ID, data);
             SetMove result = response.ResultAs<SetMove>();
-
-            var obj = new MoveC
-            {
-               // cnt = data.ID
-
-            };
-
-            //SetResponse response1 = await client.SetTaskAsync("Counter/node2", obj);
+            turnMove = null;
         }
-
-
-
-
 
         async void  GetOpBoard() 
         {
-            string s = "";
+            var data = new SetMove
+            {
+                White = "0",
+                Black = "1",
+            };
 
-            FirebaseResponse response = await client.GetTaskAsync("MoveData/0/");
-            //FirebaseResponse response = await client.GetTaskAsync("Player/0/login");
-            SetMove obj = response.ResultAs<SetMove>();
+            //string s = "";
+            SetResponse response = await client.SetTaskAsync("Game/", data);
+            SetMove result = response.ResultAs<SetMove>();
 
-            s = obj.Move;
-
-            Array.Copy(getMove(s), board, board.Length);
-            MessageBox.Show(s);
+            FirebaseResponse response2 = await client.GetTaskAsync("MoveData/0/");
+            SetMove obj = response2.ResultAs<SetMove>();
+            
+            save_bd_board = obj.Move;
+            Array.Copy(getMove(save_bd_board), board, board.Length);
+            //MessageBox.Show(save_bd_board);
+            
             draw();
 
+        }
+
+        //async void OponentMadeMove2(int[,] board)
+        //{
+
+        //    FirebaseResponse response = await client.GetTaskAsync("MoveData/0/");
+        //    obj = response.ResultAs<SetMove>();
+
+        //    save_bd_board = ArrayToString(this.board);
+        //    MessageBox.Show("Equal = "+obj.Move.Equals(save_bd_board).ToString());
+
+        //    //Array.Copy(getMove(s), board, board.Length);
+            
+        //}
+
+
+
+       async void OponentMadeMove1(int[,] board) 
+        {
+            //MessageBox.Show("0");
+            FirebaseResponse response = await client.GetTaskAsync("Game/");
+            //MessageBox.Show("1");
+            SetMove obj = response.ResultAs<SetMove>();
+            //MessageBox.Show("2");
+            //save_bd_board = ArrayToString(this.board);
+            //MessageBox.Show("3");
+            //MessageBox.Show(obj.Move.Equals(save_bd_board).ToString() + "show");
+            //MessageBox.Show("4");
+            //Array.Copy(getMove(s), board, board.Length);
+            MessageBox.Show(obj.White);
+            //OponentMadeMove2(this.board);
+            //MessageBox.Show("5");
+            if (obj.White == "1")
+            {
+                //MessageBox.Show("6");
+                /*MessageBox.Show("Move = " + obj.Move + "save = " + save_bd_board);*/
+                turnMove = true; 
+                GetOpBoard();
+                //MessageBox.Show("7");
+            }
+           else {/* MessageBox.Show("8");*/ OponentMadeMove1(this.board);  }
         }
         string ArrayToString(int[,] board) 
         {
@@ -432,6 +475,7 @@ namespace ChessOnline
                     //if (temp2 < 0) turnMove = true;
 
                     turnMove = !turnMove;
+
                     Array.Copy(board, board_save, board.Length);
 
                     if (turnMove == true)
@@ -452,6 +496,8 @@ namespace ChessOnline
                     }
                        // MessageBox.Show(MateAndStaleMateCheckB(board).ToString() + " MateBif1");
                     Array.Copy(board_save, board, board.Length);
+                    SetOpBoard();
+                    OponentMadeMove1(board);
                     //test4.ItemsSource = turnMove.ToString();
                 }
             }
