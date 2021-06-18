@@ -26,6 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FireSharp" Version="1.1.0" />
+    <PackageReference Include="FireSharp.Serialization.JsonNet" Version="1.1.0" />
+    <PackageReference Include="FireSharp.Serialization.ServiceStack" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="image\BishopBLACK.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

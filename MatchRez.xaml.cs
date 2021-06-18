@@ -43,7 +43,10 @@ namespace ChessOnline
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            MMenuWindow on = new MMenuWindow();
+            MatchRez on2 = new MatchRez();
+            this.Close();
+            on.Show();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

@@ -13,11 +13,110 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+
+using System.Data;
+
 namespace ChessOnline
 {
-    public partial class MainWindow : Window
+    public partial class White_O : Window
     {
-       public int[,] board = new int[8, 8]
+        DataTable dt = new DataTable();
+
+        IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "BRP2Q67vJAB0bKphB3ImXOYA8h01ar64w2bUlVVa",
+            BasePath = "https://chess-db-d7706-default-rtdb.firebaseio.com/"
+        };
+
+        IFirebaseClient client;
+        public int[,] board = new int[8, 8]
+
+           {
+            {-2,-3,-4,-5,-6,-4,-3,-2 },
+            {-1,-1,-1,-1,-1,-1,-1,-1 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 2, 3, 4, 5, 6, 4, 3, 2 },
+
+            ////{-2, 0, 0, 0,-6, 0, 0, 0 },
+            ////{-1,-1,-1,-1,-1,-1, 2,-1 },
+            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            ////{ 1, 1, 1, 1, 1, 1, 1, -2 },
+            ////{ 2, 0, 0, 0, 6, 0, 0, 2},
+
+            // { 0, 0, 0, 0, 6, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, -5, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            // { 0, 0, 0, 0, 0, 0, 0, 0 },
+            //{ 0, 0, 0, 0, -6, 0, 0, 0 },
+           };
+        public int[] Click1 = { 1, 1 };
+        bool Click1Made = false;
+        bool FigrAreSelect = false;
+        int fromWhere = 1;
+        int fromWhere1 = 1;
+        int whereTo = -1;
+        int whereTo1 = -1;
+        int SuperPawn0 = -1;
+
+        public bool? turnMove = true;
+
+        BitmapImage Img_W_King = new BitmapImage(new Uri(@"image\KingWHITE.png", UriKind.RelativeOrAbsolute));
+        BitmapImage Img_W_Queen = new BitmapImage(new Uri(@"image\QueenWHITE.png", UriKind.RelativeOrAbsolute));
+        BitmapImage Img_W_Bishop = new BitmapImage(new Uri(@"image\BishopWHITE.png", UriKind.RelativeOrAbsolute));
+        BitmapImage Img_W_Knight = new BitmapImage(new Uri(@"image\KnightWHITE.png", UriKind.RelativeOrAbsolute));
+        BitmapImage Img_W_Rook = new BitmapImage(new Uri(@"image\RookWHITE.png", UriKind.RelativeOrAbsolute));
+        BitmapImage Img_W_Pawn = new BitmapImage(new Uri(@"image\PawnWHITE.png", UriKind.RelativeOrAbsolute));
+
+        BitmapImage Img_B_King = new BitmapImage(new Uri(@"image\KingBLACK.png", UriKind.RelativeOrAbsolute));
+        BitmapImage Img_B_Queen = new BitmapImage(new Uri(@"image\QueenBLACK.png", UriKind.RelativeOrAbsolute));
+        BitmapImage Img_B_Bishop = new BitmapImage(new Uri(@"image\BishopBLACK.png", UriKind.RelativeOrAbsolute));
+        BitmapImage Img_B_Knight = new BitmapImage(new Uri(@"image\KnightBLACK.png", UriKind.RelativeOrAbsolute));
+        BitmapImage Img_B_Rook = new BitmapImage(new Uri(@"image\RookBLACK.png", UriKind.RelativeOrAbsolute));
+        BitmapImage Img_B_Pawn = new BitmapImage(new Uri(@"image\PawnBLACK.png", UriKind.RelativeOrAbsolute));
+
+        BitmapImage Img_W_SuperPawn = new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
+        BitmapImage Img_B_SuperPawn = new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
+
+        //BitmapImage Img_B_Rook =  new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
+
+
+        public White_O()
+        {
+
+            InitializeComponent();
+            testPos(Click1[0].ToString(), Click1[1].ToString());
+            testItem(Click1[0], Click1[1]);
+            draw();
+            client = new FireSharp.FirebaseClient(config);
+
+            dt.Columns.Add("login");
+            dt.Columns.Add("password");
+            //string r = "";
+
+            SetOpBoard();
+            GetOpBoard();
+
+
+            //r = ArrayToString(board_test);
+
+        }
+
+        public int[,] board2 = new int[8, 8]
 
            {
             //{-2,-3,-4,-5,-6,-4,-3,-2 },
@@ -29,14 +128,14 @@ namespace ChessOnline
             //{ 1, 1, 1, 1, 1, 1, 1, 1 },
             //{ 2, 3, 4, 5, 6, 4, 3, 2 },
 
-            //{-2, 0, 0, 0,-6, 0, 0, 0 },
-            //{-1,-1,-1,-1,-1,-1, 2,-1 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 0, 0, 0, 0, 0, 0, 0, 0 },
-            //{ 1, 1, 1, 1, 1, 1, 1, -2 },
-            //{ 2, 0, 0, 0, 6, 0, 0, 2},
+            ////{-2, 0, 0, 0,-6, 0, 0, 0 },
+            ////{-1,-1,-1,-1,-1,-1, 2,-1 },
+            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            ////{ 0, 0, 0, 0, 0, 0, 0, 0 },
+            ////{ 1, 1, 1, 1, 1, 1, 1, -2 },
+            ////{ 2, 0, 0, 0, 6, 0, 0, 2},
 
              { 0, 0, 0, 0, 6, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -47,44 +146,98 @@ namespace ChessOnline
              { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, -6, 0, 0, 0 },
            };
-        public int[] Click1 = {1, 1};
-        bool Click1Made = false;
-        bool FigrAreSelect = false;
-        int fromWhere = 1;
-        int fromWhere1 = 1;
-        int whereTo = -1;
-        int whereTo1 = -1;
-        int SuperPawn0 = -1;
-        
-        public bool? turnMove = true;
+        async void SetOpBoard()
+        {
+            //FirebaseResponse resp = await client.GetTaskAsync("Counter/node2");
+            //MoveC get = resp.ResultAs<MoveC>();
 
-        BitmapImage Img_W_King = new BitmapImage(new Uri(@"image\KingWHITE.png", UriKind.RelativeOrAbsolute));
-		BitmapImage Img_W_Queen = new BitmapImage(new Uri(@"image\QueenWHITE.png", UriKind.RelativeOrAbsolute));
-		BitmapImage Img_W_Bishop = new BitmapImage(new Uri(@"image\BishopWHITE.png", UriKind.RelativeOrAbsolute));
-		BitmapImage Img_W_Knight = new BitmapImage(new Uri(@"image\KnightWHITE.png", UriKind.RelativeOrAbsolute));
-		BitmapImage Img_W_Rook = new BitmapImage(new Uri(@"image\RookWHITE.png", UriKind.RelativeOrAbsolute));
-		BitmapImage Img_W_Pawn = new BitmapImage(new Uri(@"image\PawnWHITE.png", UriKind.RelativeOrAbsolute));
+            
+        var data = new SetMove
+            {
+                ID = "0",
+                Move = ArrayToString(board2),
+            };
+            
 
-		BitmapImage Img_B_King = new BitmapImage(new Uri(@"image\KingBLACK.png", UriKind.RelativeOrAbsolute));
-		BitmapImage Img_B_Queen = new BitmapImage(new Uri(@"image\QueenBLACK.png", UriKind.RelativeOrAbsolute));
-		BitmapImage Img_B_Bishop = new BitmapImage(new Uri(@"image\BishopBLACK.png", UriKind.RelativeOrAbsolute));
-		BitmapImage Img_B_Knight = new BitmapImage(new Uri(@"image\KnightBLACK.png", UriKind.RelativeOrAbsolute));
-		BitmapImage Img_B_Rook = new BitmapImage(new Uri(@"image\RookBLACK.png", UriKind.RelativeOrAbsolute));
-		BitmapImage Img_B_Pawn = new BitmapImage(new Uri(@"image\PawnBLACK.png", UriKind.RelativeOrAbsolute));
+            SetResponse response = await client.SetTaskAsync("MoveData/" + data.ID, data);
+            SetMove result = response.ResultAs<SetMove>();
 
-		BitmapImage Img_W_SuperPawn = new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
-		BitmapImage Img_B_SuperPawn = new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
+            var obj = new MoveC
+            {
+               // cnt = data.ID
 
-        //BitmapImage Img_B_Rook =  new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
+            };
 
-		public MainWindow()
-		{
-			InitializeComponent();
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]);
+            //SetResponse response1 = await client.SetTaskAsync("Counter/node2", obj);
+        }
+
+
+
+
+
+        async void  GetOpBoard() 
+        {
+            string s = "";
+
+            FirebaseResponse response = await client.GetTaskAsync("MoveData/0/");
+            //FirebaseResponse response = await client.GetTaskAsync("Player/0/login");
+            SetMove obj = response.ResultAs<SetMove>();
+
+            s = obj.Move;
+
+            Array.Copy(getMove(s), board, board.Length);
+            MessageBox.Show(s);
             draw();
-		}
-       
+
+        }
+        string ArrayToString(int[,] board) 
+        {
+            string x = "";
+            for (int i = 0; i <= 7; i++)
+            {
+                for (int j = 0; j <= 7; j++)
+                {
+
+                    //MessageBox.Show("work");
+                    x = x + board[i, j].ToString();
+                }
+                //x = x + "\n"; 
+            }
+            return x;
+        }
+
+        int[,] getMove(string x)
+        {
+            MessageBox.Show(x.Length.ToString());
+            
+            int[,] board2 = new int[8, 8];
+            for (int s = 0; s <= 63; s += 0)
+            {
+                for (int i = 0; i <= 7; i++)
+                {
+                    for (int j = 0; j <= 7; j++)
+                    {
+                        //MessageBox.Show(j.ToString());
+                        //MessageBox.Show("work");
+                        if (x[s].ToString() == "-") { s++; board2[i, j] = int.Parse(x[s].ToString()) * -1; }
+                        
+                        else
+                        board2[i, j] = int.Parse(x[s].ToString());
+                        //MessageBox.Show(int.Parse(x[55].ToString()).ToString());
+                        //if (x[s].ToString() == "-") MessageBox.Show(x[s].ToString());
+                        //MessageBox.Show(s.ToString());
+                        s++;
+                    }
+                    //x = x + "\n"; 
+                }
+            }
+            return board2;
+        }
+        //int[,] getMove(string x)
+        //{
+        //    return ;
+        //}
+
         public void testPos(string i, string j) 
         {
             //test.ItemsSource =  i + j;
@@ -1097,10 +1250,7 @@ namespace ChessOnline
 
         private void Button_Click_55(object sender, RoutedEventArgs e)
         {
-            Click1[0] = 6;
-            Click1[1] = 7;
-              if ( board[Click1[0], Click1[1]] != 0 || Click1Made == true){ Click1Made = !Click1Made; }  testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]); OnClick(); 
+            WhatGet.Text += "\n"+ WhatSent.Text;
         }
 
         private void Button_Click_56(object sender, RoutedEventArgs e)
@@ -1274,6 +1424,13 @@ namespace ChessOnline
             King_Move.Checkforblack(board);
             King_Move.Checkforwhite(board);
             draw();
+        }
+
+        private void WhatGet_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            WhatGet.ScrollToEnd();
+            //WhatGet.TextAlignment = TextAlignment.Right;
+
         }
     }
 
