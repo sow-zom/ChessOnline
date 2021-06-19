@@ -23,7 +23,7 @@ using System.Data;
 
 namespace ChessOnline
 {
-    public partial class White_O : Window
+    public partial class Black_O : Window
     {
         DataTable dt = new DataTable();
 
@@ -42,7 +42,7 @@ namespace ChessOnline
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 1 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 1, 1, 1, 1, 1, 1, 1, 1 },
             { 2, 3, 4, 5, 6, 4, 3, 2 },
 
@@ -79,7 +79,7 @@ namespace ChessOnline
 
         int firstRun = 1;
 
-        public bool? turnMove = true;
+        public bool? turnMove = null;
 
         BitmapImage Img_W_King = new BitmapImage(new Uri(@"image\KingWHITE.png", UriKind.RelativeOrAbsolute));
         BitmapImage Img_W_Queen = new BitmapImage(new Uri(@"image\QueenWHITE.png", UriKind.RelativeOrAbsolute));
@@ -101,16 +101,17 @@ namespace ChessOnline
         //BitmapImage Img_B_Rook =  new BitmapImage(new Uri(@"image\TransformW.png", UriKind.RelativeOrAbsolute));
 
 
-        public White_O()
+        public Black_O()
         {
 
-
+            
             InitializeComponent();
+           
             testPos(Click1[0].ToString(), Click1[1].ToString());
             testItem(Click1[0], Click1[1]);
             draw();
             client = new FireSharp.FirebaseClient(config);
-            if (firstRun == 1) { SetMoveTurnBD(); firstRun = 0; }
+            if (firstRun == 1) { OponentMadeMove1(this.board); firstRun = 0; }
             dt.Columns.Add("login");
             dt.Columns.Add("password");
 
@@ -175,8 +176,8 @@ namespace ChessOnline
         {
             //var data = new SetMove
             //{
-            //    White = "0",
-            //    Black = "1",
+            //    White = "1",
+            //    Black = "0",
             //};
 
 
@@ -193,13 +194,12 @@ namespace ChessOnline
             draw();
 
         }
-
         async void SetMoveTurnBD()
         {
             var data = new SetMove
             {
-                White = "0",
-                Black = "1",
+                White = "1",
+                Black = "0",
             };
 
 
@@ -213,13 +213,12 @@ namespace ChessOnline
             FirebaseResponse response = await client.GetTaskAsync("Game/");
             SetMove obj = response.ResultAs<SetMove>();
 
-            MessageBox.Show(obj.White);
-            MoveT.Text += obj.White + "\n";
+            MessageBox.Show(obj.Black);
 
-            if (obj.White == "1")
+            if (obj.Black == "1")
             {
 
-                turnMove = true;
+                turnMove = false;
                 GetOpBoard();
 
             }
@@ -243,7 +242,7 @@ namespace ChessOnline
 
         int[,] getMove(string x)
         {
-            //MessageBox.Show(x.Length.ToString());
+            MessageBox.Show(x.Length.ToString());
 
             int[,] board2 = new int[8, 8];
             for (int s = 0; s <= 63; s += 0)
@@ -514,15 +513,14 @@ namespace ChessOnline
                     //MessageBox.Show("uyhujkhj");
                     if (t1.Visibility != b3.Visibility)
                     {
-                        OponentMadeMove1(board);
                         SetOpBoard();
-
+                        OponentMadeMove1(board);
                     }
                     //test4.ItemsSource = turnMove.ToString();
                 }
             }
 
-            wm.Text = turnMove.ToString();
+
         }
 
         int leagalMove(int[,] board, int fromWhere1, int fromWhere, int whereTo1, int whereTo)
@@ -1371,12 +1369,7 @@ namespace ChessOnline
 
         private void Button_Click_55(object sender, RoutedEventArgs e)
         {
-            Click1[0] = 6;
-            Click1[1] = 7;
-            if (board[Click1[0], Click1[1]] != 0 || Click1Made == true) { Click1Made = !Click1Made; }
-            testPos(Click1[0].ToString(), Click1[1].ToString());
-            testItem(Click1[0], Click1[1]); OnClick();
-            //WhatGet.Text += "\n" + WhatSent.Text;
+            WhatGet.Text += "\n" + WhatSent.Text;
         }
 
         private void Button_Click_56(object sender, RoutedEventArgs e)
@@ -1581,7 +1574,6 @@ namespace ChessOnline
         private void WhatGet_TextChanged(object sender, TextChangedEventArgs e)
         {
             WhatGet.ScrollToEnd();
-            MoveT.ScrollToEnd();
             //WhatGet.TextAlignment = TextAlignment.Right;
 
         }

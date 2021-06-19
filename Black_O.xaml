@@ -1,4 +1,4 @@
-﻿<Window x:Class="ChessOnline.White_O"
+﻿<Window x:Class="ChessOnline.Black_O"
        
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -13,330 +13,330 @@
 
 
 
-            <Button  Background="White" HorizontalAlignment="Left" Margin="181,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click">
+            <Button  Background="White" HorizontalAlignment="Left" Margin="881,720,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click">
                 <StackPanel>
                     <Image x:Name="a8"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="281,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_1" >
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="781,720,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_1" >
                 <StackPanel>
                     <Image x:Name="b8"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="381,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_2">
+            <Button Background="White" HorizontalAlignment="Left" Margin="681,720,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_2">
                 <StackPanel>
                     <Image x:Name="c8"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="481,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_3">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="581,720,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_3">
                 <StackPanel>
                     <Image x:Name="d8"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="581,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_4">
+            <Button Background="White" HorizontalAlignment="Left" Margin="481,720,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_4">
                 <StackPanel>
                     <Image x:Name="e8"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="681,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_5">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="381,720,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_5">
                 <StackPanel>
                     <Image x:Name="f8"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="781,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_6">
+            <Button Background="White" HorizontalAlignment="Left" Margin="281,720,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_6">
                 <StackPanel>
                     <Image x:Name="g8"/>
                 </StackPanel>
             </Button>
 
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="881,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_7">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="181,720,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_7">
                 <StackPanel>
                     <Image x:Name="h8"/>
                 </StackPanel>
             </Button>
 
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="181,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_8">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="881,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_8">
                 <StackPanel>
                     <Image x:Name="a7"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="281,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_9">
+            <Button Background="White" HorizontalAlignment="Left" Margin="781,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_9">
                 <StackPanel>
                     <Image x:Name="b7"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="381,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_10">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="681,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_10">
                 <StackPanel>
                     <Image x:Name="c7"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="481,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_11">
+            <Button Background="White" HorizontalAlignment="Left" Margin="581,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_11">
                 <StackPanel>
                     <Image x:Name="d7"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="581,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_12">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="481,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_12">
                 <StackPanel>
                     <Image x:Name="e7"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="681,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_13">
+            <Button Background="White" HorizontalAlignment="Left" Margin="381,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_13">
                 <StackPanel>
                     <Image x:Name="f7"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="781,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_14">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="281,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_14">
                 <StackPanel>
                     <Image x:Name="g7"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="881,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_15">
+            <Button Background="White" HorizontalAlignment="Left" Margin="181,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_15">
                 <StackPanel>
                     <Image x:Name="h7"/>
                 </StackPanel>
             </Button>
 
-            <Button Background="White" HorizontalAlignment="Left" Margin="181,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_16">
+            <Button Background="White" HorizontalAlignment="Left" Margin="881,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_16">
                 <StackPanel>
                     <Image x:Name="a6"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="281,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_17">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="781,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_17">
                 <StackPanel>
                     <Image x:Name="b6"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="381,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_18">
+            <Button Background="White" HorizontalAlignment="Left" Margin="681,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_18">
                 <StackPanel>
                     <Image x:Name="c6"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="481,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_19">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="581,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_19">
                 <StackPanel>
                     <Image x:Name="d6"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="581,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_20">
+            <Button Background="White" HorizontalAlignment="Left" Margin="481,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_20">
                 <StackPanel>
                     <Image x:Name="e6"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="681,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_21">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="381,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_21">
                 <StackPanel>
                     <Image x:Name="f6"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="781,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_22">
+            <Button Background="White" HorizontalAlignment="Left" Margin="281,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_22">
                 <StackPanel>
                     <Image x:Name="g6"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="881,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_23">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="181,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_23">
                 <StackPanel>
                     <Image x:Name="h6"/>
                 </StackPanel>
             </Button>
 
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="181,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_24">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="881,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_24">
                 <StackPanel>
                     <Image x:Name="a5"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="281,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_25">
+            <Button Background="White" HorizontalAlignment="Left" Margin="781,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_25">
                 <StackPanel>
                     <Image x:Name="b5"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="381,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_26">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="681,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_26">
                 <StackPanel>
                     <Image x:Name="c5"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="481,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_27">
+            <Button Background="White" HorizontalAlignment="Left" Margin="581,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_27">
                 <StackPanel>
                     <Image x:Name="d5"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="581,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_28">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="481,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_28">
                 <StackPanel>
                     <Image x:Name="e5"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="681,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_29">
+            <Button Background="White" HorizontalAlignment="Left" Margin="381,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_29">
                 <StackPanel>
                     <Image x:Name="f5"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="781,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_30">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="281,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_30">
                 <StackPanel>
                     <Image x:Name="g5"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="881,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_31">
+            <Button Background="White" HorizontalAlignment="Left" Margin="181,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_31">
                 <StackPanel>
                     <Image x:Name="h5"/>
                 </StackPanel>
             </Button>
 
-            <Button Background="White" HorizontalAlignment="Left" Margin="181,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_32">
+            <Button Background="White" HorizontalAlignment="Left" Margin="881,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_32">
                 <StackPanel>
                     <Image x:Name="a4"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="281,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_33">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="781,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_33">
                 <StackPanel>
                     <Image x:Name="b4"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="381,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_34">
+            <Button Background="White" HorizontalAlignment="Left" Margin="681,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_34">
                 <StackPanel>
                     <Image x:Name="c4"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="481,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_35">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="581,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_35">
                 <StackPanel>
                     <Image x:Name="d4"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="581,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_36">
+            <Button Background="White" HorizontalAlignment="Left" Margin="481,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_36">
                 <StackPanel>
                     <Image x:Name="e4"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="681,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_37">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="381,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_37">
                 <StackPanel>
                     <Image x:Name="f4"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="781,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_38">
+            <Button Background="White" HorizontalAlignment="Left" Margin="281,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_38">
                 <StackPanel>
                     <Image x:Name="g4"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="881,423,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_39">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="181,323,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_39">
                 <StackPanel>
                     <Image x:Name="h4"/>
                 </StackPanel>
             </Button>
 
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="181,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_40">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="881,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_40">
                 <StackPanel>
                     <Image x:Name="a3"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="281,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_41">
+            <Button Background="White" HorizontalAlignment="Left" Margin="781,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_41">
                 <StackPanel>
                     <Image x:Name="b3"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="381,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_42">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="681,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_42">
                 <StackPanel>
                     <Image x:Name="c3"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="481,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_43">
+            <Button Background="White" HorizontalAlignment="Left" Margin="581,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_43">
                 <StackPanel>
                     <Image x:Name="d3"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="581,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_44">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="481,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_44">
                 <StackPanel>
                     <Image x:Name="e3"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="681,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_45">
+            <Button Background="White" HorizontalAlignment="Left" Margin="381,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_45">
                 <StackPanel>
                     <Image x:Name="f3"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="781,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_46">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="281,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_46">
                 <StackPanel>
                     <Image x:Name="g3"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="881,523,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_47">
+            <Button Background="White" HorizontalAlignment="Left" Margin="181,223,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_47">
                 <StackPanel>
                     <Image x:Name="h3"/>
                 </StackPanel>
             </Button>
 
-            <Button Background="White" HorizontalAlignment="Left" Margin="181,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_48">
+            <Button Background="White" HorizontalAlignment="Left" Margin="881,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_48">
                 <StackPanel>
                     <Image x:Name="a2"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="281,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_49">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="781,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_49">
                 <StackPanel>
                     <Image x:Name="b2"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="381,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_50">
+            <Button Background="White" HorizontalAlignment="Left" Margin="681,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_50">
                 <StackPanel>
                     <Image x:Name="c2"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="481,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_51">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="581,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_51">
                 <StackPanel>
                     <Image x:Name="d2"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="581,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_52">
+            <Button Background="White" HorizontalAlignment="Left" Margin="481,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_52">
                 <StackPanel>
                     <Image x:Name="e2"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="681,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_53">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="381,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_53">
                 <StackPanel>
                     <Image x:Name="f2"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="781,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_54">
+            <Button Background="White" HorizontalAlignment="Left" Margin="281,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_54">
                 <StackPanel>
                     <Image x:Name="g2"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="881,623,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_55">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="181,123,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_55">
                 <StackPanel>
                     <Image x:Name="h2"/>
                 </StackPanel>
             </Button>
 
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="181,723,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_56">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="881,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_56">
                 <StackPanel>
                     <Image x:Name="a1"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="281,723,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_57">
+            <Button Background="White" HorizontalAlignment="Left" Margin="781,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_57">
                 <StackPanel>
                     <Image x:Name="b1"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="381,723,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_58">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="681,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_58">
                 <StackPanel>
                     <Image x:Name="c1"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="481,723,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_59">
+            <Button Background="White" HorizontalAlignment="Left" Margin="581,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_59">
                 <StackPanel>
                     <Image x:Name="d1"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="581,723,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_60">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="481,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_60">
                 <StackPanel>
                     <Image x:Name="e1"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="681,723,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_61">
+            <Button Background="White" HorizontalAlignment="Left" Margin="381,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_61">
                 <StackPanel>
                     <Image x:Name="f1"/>
                 </StackPanel>
             </Button>
-            <Button Background="Brown" HorizontalAlignment="Left" Margin="781,723,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_62">
+            <Button Background="Brown" HorizontalAlignment="Left" Margin="281,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_62">
                 <StackPanel>
                     <Image x:Name="g1"/>
                 </StackPanel>
             </Button>
-            <Button Background="White" HorizontalAlignment="Left" Margin="881,723,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_63">
+            <Button Background="White" HorizontalAlignment="Left" Margin="181,23,0,0" VerticalAlignment="Top" Height="100" Width="100" Click="Button_Click_63">
                 <StackPanel>
                     <Image x:Name="h1"/>
                 </StackPanel>
@@ -451,8 +451,6 @@
 
 
         </Grid>
-        <TextBox TextAlignment="Right" x:Name="MoveT" FontSize="24"  IsReadOnly="True" HorizontalAlignment="Left" Margin="10,394,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Height="60" TextChanged="WhatGet_TextChanged"/>
-        <TextBox TextAlignment="Right" x:Name="wm" FontSize="24"  IsReadOnly="True" HorizontalAlignment="Left" Margin="10,488,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Height="60" TextChanged="WhatGet_TextChanged"/>
 
 
     </Grid>
