@@ -169,7 +169,7 @@ namespace ChessOnline
             SetResponse response = await client.SetTaskAsync("MoveData/" + data.ID, data);
             SetMove result = response.ResultAs<SetMove>();
             turnMove = null;
-            SetMoveTurnBD();
+            
         }
 
         async void GetOpBoard()
@@ -213,7 +213,7 @@ namespace ChessOnline
             FirebaseResponse response = await client.GetTaskAsync("Game/");
             SetMove obj = response.ResultAs<SetMove>();
 
-            MessageBox.Show(obj.Black);
+            //MessageBox.Show(obj.Black);
 
             if (obj.Black == "1")
             {
@@ -396,6 +396,10 @@ namespace ChessOnline
         }
         void OnClick() // коли я це написав як це працювало знав я і бог, тепер знає тільки бог. 
         {
+            if (t1.Visibility != b3.Visibility)
+            {
+                SetMoveTurnBD();
+            }
             //test5.ItemsSource = King_Move.right_towerW_first_move.ToString();
             //test6.ItemsSource = King_Move.left_towerW_first_move.ToString();
             //int[,] board_save = board;
@@ -513,8 +517,10 @@ namespace ChessOnline
                     //MessageBox.Show("uyhujkhj");
                     if (t1.Visibility != b3.Visibility)
                     {
+                        SetMoveTurnBD();
                         SetOpBoard();
                         OponentMadeMove1(board);
+                        
                     }
                     //test4.ItemsSource = turnMove.ToString();
                 }
@@ -1574,6 +1580,7 @@ namespace ChessOnline
         private void WhatGet_TextChanged(object sender, TextChangedEventArgs e)
         {
             WhatGet.ScrollToEnd();
+            MoveT.ScrollToEnd();
             //WhatGet.TextAlignment = TextAlignment.Right;
 
         }

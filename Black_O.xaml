@@ -447,6 +447,8 @@
 
             </Button>
             <TextBox x:Name="WhatSent" FontSize="24"  HorizontalAlignment="Left" Margin="1085,650,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="401" Height="73"/>
+            <TextBox TextAlignment="Right" x:Name="MoveT" FontSize="24"  IsReadOnly="True" HorizontalAlignment="Left" Margin="10,394,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Height="60" TextChanged="WhatGet_TextChanged"/>
+            <TextBox TextAlignment="Right" x:Name="wm" FontSize="24"  IsReadOnly="True" HorizontalAlignment="Left" Margin="10,488,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Height="60" TextChanged="WhatGet_TextChanged"/>
 
 
 

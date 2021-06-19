@@ -170,8 +170,8 @@ namespace ChessOnline
 			{
 				if (board[oy,i] <= 0 && (nx == i && ny == oy))
 				{
-					if (test_move == 0 && ox == 0) { King_Move.left_towerW_first_move = 1;MessageBox.Show(" King_Move.left_towerW_first_move = 1"); }
-					if (test_move == 0 && ox == 7) { King_Move.right_towerW_first_move = 1; MessageBox.Show(" King_Move.right_towerW_first_move = 1"); }
+					if (test_move == 0 && ox == 0) { King_Move.left_towerW_first_move = 1;/*MessageBox.Show(" King_Move.left_towerW_first_move = 1");*/ }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerW_first_move = 1; /*MessageBox.Show(" King_Move.right_towerW_first_move = 1");*/ }
 				return 1;
 				}
 				else if (board[oy,i] != 0)
@@ -183,8 +183,8 @@ namespace ChessOnline
 			{
 				if (board[i,ox] <= 0 && (ny == i && nx == ox))
 				{
-					if (test_move == 0 && ox == 0) { King_Move.left_towerW_first_move = 1;MessageBox.Show(" King_Move.left_towerW_first_move = 1"); }
-					if (test_move == 0 && ox == 7) { King_Move.right_towerW_first_move = 1; MessageBox.Show(" King_Move.right_towerW_first_move = 1"); }
+					if (test_move == 0 && ox == 0) { King_Move.left_towerW_first_move = 1;/*MessageBox.Show(" King_Move.left_towerW_first_move = 1");*/ }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerW_first_move = 1; /*MessageBox.Show(" King_Move.right_towerW_first_move = 1");*/ }
 					return 1;
 				}
 				else if (board[i,ox] != 0)
@@ -196,8 +196,8 @@ namespace ChessOnline
 			{
 				if (board[oy,i] <= 0 && (ny == oy && nx == i))
 				{
-					if (test_move == 0 && ox == 0) { King_Move.left_towerW_first_move = 1;MessageBox.Show(" King_Move.left_towerW_first_move = 1"); }
-					if (test_move == 0 && ox == 7) { King_Move.right_towerW_first_move = 1; MessageBox.Show(" King_Move.right_towerW_first_move = 1"); }
+					if (test_move == 0 && ox == 0) { King_Move.left_towerW_first_move = 1;/*MessageBox.Show(" King_Move.left_towerW_first_move = 1");*/ }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerW_first_move = 1; /*MessageBox.Show(" King_Move.right_towerW_first_move = 1");*/ }
 					return 1;
 				}
 				else if (board[oy,i] != 0)
@@ -209,8 +209,8 @@ namespace ChessOnline
 			{
 				if (board[i,ox] <= 0 && (ny == i && nx == ox))
 				{
-					if (test_move == 0 && ox == 0) { King_Move.left_towerW_first_move = 1;MessageBox.Show(" King_Move.left_towerW_first_move = 1"); }
-					if (test_move == 0 && ox == 7) { King_Move.right_towerW_first_move = 1; MessageBox.Show(" King_Move.right_towerW_first_move = 1"); }
+					if (test_move == 0 && ox == 0) { King_Move.left_towerW_first_move = 1;/*MessageBox.Show(" King_Move.left_towerW_first_move = 1");*/ }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerW_first_move = 1; /*MessageBox.Show(" King_Move.right_towerW_first_move = 1");*/ }
 					return 1;
 				}
 				else if (board[i,ox] != 0)
@@ -227,8 +227,8 @@ namespace ChessOnline
 			{
 				if (board[oy, i] >= 0 && (nx == i && ny == oy))
 				{
-					if (test_move == 0 && ox == 0) { King_Move.left_towerB_first_move = 1; MessageBox.Show(" King_Move.left_towerB_first_move = 1"); }
-					if (test_move == 0 && ox == 7) { King_Move.right_towerB_first_move = 1; MessageBox.Show(" King_Move.right_towerB_first_move = 1"); }
+					if (test_move == 0 && ox == 0) { King_Move.left_towerB_first_move = 1; /*MessageBox.Show(" King_Move.left_towerB_first_move = 1");*/ }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerB_first_move = 1;/* MessageBox.Show(" King_Move.right_towerB_first_move = 1");*/ }
 					return 1;
 				}
 				else if (board[oy, i] != 0)
@@ -240,8 +240,8 @@ namespace ChessOnline
 			{
 				if (board[i, ox] >= 0 && (ny == i && nx == ox))
 				{
-					if (test_move == 0 && ox == 0) { King_Move.left_towerB_first_move = 1; MessageBox.Show(" King_Move.left_towerB_first_move = 1"); }
-					if (test_move == 0 && ox == 7) { King_Move.right_towerB_first_move = 1; MessageBox.Show(" King_Move.right_towerB_first_move = 1"); }
+					if (test_move == 0 && ox == 0) { King_Move.left_towerB_first_move = 1;/* MessageBox.Show(" King_Move.left_towerB_first_move = 1");*/ }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerB_first_move = 1; /*MessageBox.Show(" King_Move.right_towerB_first_move = 1"); */}
 					return 1;
 				}
 				else if (board[i, ox] != 0)
@@ -253,8 +253,8 @@ namespace ChessOnline
 			{
 				if (board[oy, i] >= 0 && (ny == oy && nx == i))
 				{
-					if (test_move == 0 && ox == 0) { King_Move.left_towerB_first_move = 1; MessageBox.Show(" King_Move.left_towerB_first_move = 1"); }
-					if (test_move == 0 && ox == 7) { King_Move.right_towerB_first_move = 1; MessageBox.Show(" King_Move.right_towerB_first_move = 1"); }
+					if (test_move == 0 && ox == 0) { King_Move.left_towerB_first_move = 1; /*MessageBox.Show(" King_Move.left_towerB_first_move = 1");*/ }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerB_first_move = 1;/* MessageBox.Show(" King_Move.right_towerB_first_move = 1"); */}
 					return 1;
 				}
 				else if (board[oy, i] != 0)
@@ -266,8 +266,8 @@ namespace ChessOnline
 			{
 				if (board[i, ox] >= 0 && (ny == i && nx == ox))
 				{
-					if (test_move == 0 && ox == 0) { King_Move.left_towerB_first_move = 1; MessageBox.Show(" King_Move.left_towerB_first_move = 1"); }
-					if (test_move == 0 && ox == 7) { King_Move.right_towerB_first_move = 1; MessageBox.Show(" King_Move.right_towerB_first_move = 1"); }
+					if (test_move == 0 && ox == 0) { King_Move.left_towerB_first_move = 1;/* MessageBox.Show(" King_Move.left_towerB_first_move = 1");*/ }
+					if (test_move == 0 && ox == 7) { King_Move.right_towerB_first_move = 1; /*MessageBox.Show(" King_Move.right_towerB_first_move = 1");*/ }
 					return 1;
 				}
 				else if (board[i, ox] != 0)

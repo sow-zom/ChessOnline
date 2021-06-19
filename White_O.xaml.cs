@@ -13,8 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
-
+using System.Threading;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
@@ -42,7 +41,7 @@ namespace ChessOnline
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 1 },
+            { 0, 0, 0, 0, 0, 0, 0, 0 },
             { 1, 1, 1, 1, 1, 1, 1, 1 },
             { 2, 3, 4, 5, 6, 4, 3, 2 },
 
@@ -76,7 +75,7 @@ namespace ChessOnline
         SetMove obj = new SetMove();
 
 
-
+        //static AutoResetEvent eventAReady ;
         int firstRun = 1;
 
         public bool? turnMove = true;
@@ -168,7 +167,7 @@ namespace ChessOnline
             SetResponse response = await client.SetTaskAsync("MoveData/" + data.ID, data);
             SetMove result = response.ResultAs<SetMove>();
             turnMove = null;
-            SetMoveTurnBD();
+            
         }
 
         async void GetOpBoard()
@@ -206,6 +205,7 @@ namespace ChessOnline
             SetResponse response = await client.SetTaskAsync("Game/", data);
             SetMove result = response.ResultAs<SetMove>();
 
+
         }
         async void OponentMadeMove1(int[,] board)
         {
@@ -213,15 +213,19 @@ namespace ChessOnline
             FirebaseResponse response = await client.GetTaskAsync("Game/");
             SetMove obj = response.ResultAs<SetMove>();
 
-            MessageBox.Show(obj.White);
+            //MessageBox.Show(obj.White);
+            //System.();
+           // eventAReady.Set();
             MoveT.Text += obj.White + "\n";
 
             if (obj.White == "1")
             {
-
+                //int x = 50;
                 turnMove = true;
-                GetOpBoard();
+                //MessageBox.Show(obj.White);
+                //eventAReady.Set();
 
+                GetOpBoard();
             }
             else { OponentMadeMove1(this.board); }
         }
@@ -381,22 +385,23 @@ namespace ChessOnline
                     default: /*test3.ItemsSource = "LOOOOOL";*/ return 0;
                 }
 
-            if (turnMove == false)
-                switch (i)
-                {
-                    case -1: return Move.Move_PawnB(board, fromWhere1, fromWhere, whereTo1, whereTo);
-                    case -2: return Move.Move_RookB(board, fromWhere1, fromWhere, whereTo1, whereTo);
-                    case -3: return Move.Move_KnightB(board, fromWhere1, fromWhere, whereTo1, whereTo);
-                    case -4: return Move.Move_BishopB(board, fromWhere1, fromWhere, whereTo1, whereTo);
-                    case -5: return Move.Move_QueenB(board, fromWhere1, fromWhere, whereTo1, whereTo);
-                    case -6: return King_Move.Move_KingB(board, fromWhere1, fromWhere, whereTo1, whereTo);
+            //if (turnMove == false)
+            //    switch (i)
+            //    {
+            //        case -1: return Move.Move_PawnB(board, fromWhere1, fromWhere, whereTo1, whereTo);
+            //        case -2: return Move.Move_RookB(board, fromWhere1, fromWhere, whereTo1, whereTo);
+            //        case -3: return Move.Move_KnightB(board, fromWhere1, fromWhere, whereTo1, whereTo);
+            //        case -4: return Move.Move_BishopB(board, fromWhere1, fromWhere, whereTo1, whereTo);
+            //        case -5: return Move.Move_QueenB(board, fromWhere1, fromWhere, whereTo1, whereTo);
+            //        case -6: return King_Move.Move_KingB(board, fromWhere1, fromWhere, whereTo1, whereTo);
 
-                    default: /*test3.ItemsSource = "LOOOOOL";*/ return 0;
-                }
+            //        default: /*test3.ItemsSource = "LOOOOOL";*/ return 0;
+            //    }
             return 0;
         }
         void OnClick() // коли я це написав як це працювало знав я і бог, тепер знає тільки бог. 
         {
+            
             //test5.ItemsSource = King_Move.right_towerW_first_move.ToString();
             //test6.ItemsSource = King_Move.left_towerW_first_move.ToString();
             //int[,] board_save = board;
@@ -459,6 +464,7 @@ namespace ChessOnline
                         {
                             Array.Copy(board_save, board, board.Length);
                             turnMove = !turnMove;
+
                         }
                     }
                     if (turnMove == false)
@@ -514,6 +520,9 @@ namespace ChessOnline
                     //MessageBox.Show("uyhujkhj");
                     if (t1.Visibility != b3.Visibility)
                     {
+                        
+                        SetMoveTurnBD();
+                        
                         OponentMadeMove1(board);
                         SetOpBoard();
 
