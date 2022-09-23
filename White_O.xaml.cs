@@ -105,6 +105,7 @@ namespace ChessOnline
 
 
             InitializeComponent();
+            LiveCall();
             testPos(Click1[0].ToString(), Click1[1].ToString());
             testItem(Click1[0], Click1[1]);
             draw();
@@ -155,7 +156,25 @@ namespace ChessOnline
         //    { 0, 0, 0, 0, -6, 0, 0, 0 },
         //   };
 
+        async void LiveCall()
+        {
+            while (true)
+            {
+                await Task.Delay(1000);
+                //FirebaseResponse res = await client.GetTaskAsync(@"/MoveData/0/Move");
+                //string data = res.Body.ToString();
+                ////UpdateRTB(data);
+                //WhatGet.Text = data.ToString();
+                //save_bd_board = data.ToString();
+                //Array.Copy(getMove(save_bd_board), board, board.Length);
+                FirebaseResponse response2 = await client.GetTaskAsync("MoveData/0/");
+                SetMove obj = response2.ResultAs<SetMove>();
 
+                save_bd_board = obj.Move;
+                Array.Copy(getMove(save_bd_board), board, board.Length);
+                draw();
+            }
+        }
         async void SetOpBoard()
         {
 

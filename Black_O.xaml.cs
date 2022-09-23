@@ -12,9 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-
-
+using Newtonsoft.Json;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
@@ -106,7 +104,7 @@ namespace ChessOnline
 
             
             InitializeComponent();
-           
+            LiveCall();
             testPos(Click1[0].ToString(), Click1[1].ToString());
             testItem(Click1[0], Click1[1]);
             draw();
@@ -124,6 +122,26 @@ namespace ChessOnline
 
             //r = ArrayToString(board_test);
 
+        }
+        
+        async void LiveCall()
+        {
+            while (true)
+            {
+                await Task.Delay(1000);
+                //FirebaseResponse res = await client.GetTaskAsync(@"/MoveData/0/Move");
+                //string data = res.Body.ToString();
+                ////UpdateRTB(data);
+                //WhatGet.Text = data.ToString();
+                //save_bd_board = data.ToString();
+                //Array.Copy(getMove(save_bd_board), board, board.Length);
+                FirebaseResponse response2 = await client.GetTaskAsync("MoveData/0/");
+                SetMove obj = response2.ResultAs<SetMove>();  
+
+                save_bd_board = obj.Move;
+                Array.Copy(getMove(save_bd_board), board, board.Length);
+                draw();
+            }
         }
 
         //public int[,] board2 = new int[8, 8]
@@ -242,7 +260,7 @@ namespace ChessOnline
 
         int[,] getMove(string x)
         {
-            MessageBox.Show(x.Length.ToString());
+            //MessageBox.Show(x.Length.ToString());
 
             int[,] board2 = new int[8, 8];
             for (int s = 0; s <= 63; s += 0)
@@ -1583,6 +1601,12 @@ namespace ChessOnline
             MoveT.ScrollToEnd();
             //WhatGet.TextAlignment = TextAlignment.Right;
 
+        }
+
+        private void Button_Click_64(object sender, RoutedEventArgs e)
+        {
+            White_O on = new White_O();
+            on.Show();
         }
     }
 

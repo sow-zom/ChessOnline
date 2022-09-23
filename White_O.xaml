@@ -6,7 +6,7 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:local="clr-namespace:ChessOnline"
   mc:Ignorable="d"
-  Title="MainWindow" Height="870" Width="1556" WindowState ="Maximized" WindowStyle="None" ResizeMode = "NoResize">
+  Title="MainWindow" Height="870" Width="1556" WindowState ="Normal" WindowStyle="ThreeDBorderWindow"  ResizeMode = "NoResize">
     <Grid x:Name="MainGrid">
         <Grid Background="Peru">
 
