@@ -71,7 +71,7 @@ namespace ChessOnline
         int whereTo1 = -1;
         int SuperPawn0 = -1;
         string save_bd_board = "";
-        SetMove obj = new SetMove();
+        //SetMove obj = new SetMove();
 
 
 
@@ -105,6 +105,7 @@ namespace ChessOnline
             
             InitializeComponent();
             LiveCall();
+           
             testPos(Click1[0].ToString(), Click1[1].ToString());
             testItem(Click1[0], Click1[1]);
             draw();
@@ -136,7 +137,7 @@ namespace ChessOnline
                 //save_bd_board = data.ToString();
                 //Array.Copy(getMove(save_bd_board), board, board.Length);
                 FirebaseResponse response2 = await client.GetTaskAsync("MoveData/0/");
-                SetMove obj = response2.ResultAs<SetMove>();  
+                SetMove obj = response2.ResultAs<SetMove>();  ///some "Object reference not set to an instance of an object need to be fixed
 
                 save_bd_board = obj.Move;
                 Array.Copy(getMove(save_bd_board), board, board.Length);
@@ -414,6 +415,7 @@ namespace ChessOnline
         }
         void OnClick() // коли я це написав як це працювало знав я і бог, тепер знає тільки бог. 
         {
+            Game_Info();//del later
             if (t1.Visibility != b3.Visibility)
             {
                 SetMoveTurnBD();
@@ -1598,7 +1600,9 @@ namespace ChessOnline
         private void WhatGet_TextChanged(object sender, TextChangedEventArgs e)
         {
             WhatGet.ScrollToEnd();
-            MoveT.ScrollToEnd();
+            //MoveT.ScrollToEnd();
+
+
             //WhatGet.TextAlignment = TextAlignment.Right;
 
         }
@@ -1607,6 +1611,47 @@ namespace ChessOnline
         {
             White_O on = new White_O();
             on.Show();
+        }
+
+        private void WhatSent_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Game_info(object sender, TextChangedEventArgs e)
+        {
+           
+            
+
+        }
+        private void Game_Info()
+        {
+            game_info.Text = " \nClick1Made = " + Click1Made.ToString() +
+                " \nFigrAreSelect =" + FigrAreSelect.ToString() +
+ 
+                "\nfromWhere = " + fromWhere.ToString() +
+               "\nfromWhere1 =" + fromWhere1.ToString() +
+               " \nwhereTo = " + whereTo.ToString()+
+               "\nwhereTo1 = " + whereTo1.ToString()+
+               "\nSuperPawn0 = " + SuperPawn0.ToString()+
+               //"\nsave_bd_board = " + save_bd_board.ToString()+
+               //"\nfirstRun = " + firstRun.ToString();
+
+            //    public int[] Click1 = { 1, 1 };
+            //int fromWhere = 1;
+            //int fromWhere1 = 1;
+            //int whereTo = -1;
+            //int whereTo1 = -1;
+            //int SuperPawn0 = -1;
+            //string save_bd_board = "";
+            //SetMove obj = new SetMove();
+
+
+
+            //int firstRun = 1;
+
+            //public bool? turnMove = null;
+
         }
     }
 
